@@ -13,7 +13,6 @@ nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> gy <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.declaration()<CR>
-
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all",     -- one of "all", "language", or a list of languages
@@ -21,7 +20,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust" },  -- list of language that will be disabled
   },
-}
-require'lspconfig'.vuels.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.vuels.setup{on_attach=require'completion'.on_attach},
 require'lspconfig'.tsserver.setup{on_attach=require'completion'.on_attach}
+}
 EOF
