@@ -11,12 +11,13 @@ end
 -- Only required if you have packer in your `opt` pack
 vim.cmd [[packadd packer.nvim]]
 
---vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
-
 return require('packer').startup(function()
 
   -- Packer can manage itself as an optional plugin
   use {'wbthomason/packer.nvim', opt = true}
+
+  --map with lua
+  use { 'svermeulen/vimpeccable' }
 
 
   --- Project and Sessions ---------------------------
@@ -58,8 +59,6 @@ return require('packer').startup(function()
     'hrsh7th/nvim-compe',
     config = function() require'plugins.compe' end
   }
-  --map with lua
-  use { 'svermeulen/vimpeccable' }
   -----------------------------------------------------
 
 
@@ -96,10 +95,10 @@ return require('packer').startup(function()
   --- Appearence ---------------------------
   --themes
   --use { 'lifepillar/vim-solarized8' }
-  --Plug 'morhetz/gruvbox'
   use { 'lifepillar/vim-gruvbox8' }
   --use { 'tjdevries/colorbuddy.vim' }
   --use { 'tjdevries/gruvbuddy.nvim' }
+  use { 'sainnhe/sonokai' }
   --Stautus bar
   --use { 'rbong/vim-crystalline' }
   use { 
@@ -110,11 +109,11 @@ return require('packer').startup(function()
 
 
   --- Appearence ---------------------------
-  -- use { 
-  --   'nvim-treesitter/nvim-treesitter',
-  --   run = ':tsupdate',
-  --   config = function() require'plugins.treesitter' end
-  -- }
+  use { 
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function() require'plugins.treesitter' end
+  }
   -----------------------------------------------------
 
 

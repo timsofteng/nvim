@@ -1,5 +1,4 @@
 let SessionLoad = 1
-if &cp | set nocp | endif
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
 silent only
@@ -9,9 +8,17 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
+badd +115 ~/.config/nvim/lua/plugins.lua
+badd +17 lua/plugins/lualine.lua
+badd +1 lua/map.lua
+badd +13 init.vim
+badd +1 lua/plugins/signify.lua
+badd +2 initt.lua
+badd +1 init.lua
+badd +1 lua/colorscheme.lua
 argglobal
 %argdel
-edit init.lua
+edit lua/plugins/signify.lua
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -27,11 +34,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 64 + 96) / 192)
+exe 'vert 1resize ' . ((&columns * 63 + 96) / 192)
 exe 'vert 2resize ' . ((&columns * 63 + 96) / 192)
-exe 'vert 3resize ' . ((&columns * 63 + 96) / 192)
+exe 'vert 3resize ' . ((&columns * 64 + 96) / 192)
 argglobal
-balt ~/.config/nvim/lua/plugins.lua
+balt init.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -41,16 +48,20 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 9 - ((8 * winheight(0) + 23) / 47)
+let &fdl = &fdl
+let s:l = 4 - ((3 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 9
-normal! 0
+keepjumps 4
+normal! 039|
 wincmd w
 argglobal
 if bufexists("~/.config/nvim/lua/plugins.lua") | buffer ~/.config/nvim/lua/plugins.lua | else | edit ~/.config/nvim/lua/plugins.lua | endif
-balt init.lua
+if &buftype ==# 'terminal'
+  silent file ~/.config/nvim/lua/plugins.lua
+endif
+balt lua/colorscheme.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -60,16 +71,19 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 113 - ((22 * winheight(0) + 23) / 47)
+let &fdl = &fdl
+let s:l = 104 - ((25 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 113
-normal! 0
+keepjumps 104
+normal! 03|
 wincmd w
 argglobal
 if bufexists("lua/plugins/lualine.lua") | buffer lua/plugins/lualine.lua | else | edit lua/plugins/lualine.lua | endif
-balt init.lua
+if &buftype ==# 'terminal'
+  silent file lua/plugins/lualine.lua
+endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -79,39 +93,30 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 25 - ((5 * winheight(0) + 23) / 47)
+let &fdl = &fdl
+let s:l = 17 - ((5 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 25
+keepjumps 17
 normal! 0
 wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 64 + 96) / 192)
+3wincmd w
+exe 'vert 1resize ' . ((&columns * 63 + 96) / 192)
 exe 'vert 2resize ' . ((&columns * 63 + 96) / 192)
-exe 'vert 3resize ' . ((&columns * 63 + 96) / 192)
+exe 'vert 3resize ' . ((&columns * 64 + 96) / 192)
 tabnext 1
-badd +1 init.lua
-badd +1 ~/.config/nvim/lua/plugins.lua
-badd +1 lua/plugins/lualine.lua
-badd +8 lua/plugins/treesitter.lua
-badd +2 lua/plugins/telescope.lua
-badd +30 lua/basic.lua
-badd +1 initt.vim
-badd +5 lua/colorscheme.lua
-badd +25 lua/map.lua
-badd +172 ~/.local/share/nvim/site/pack/packer/start/lualine.nvim/doc/lualine.txt
-if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
-set winheight=1 winwidth=20 shortmess=filnxtToOF
-set winminheight=1 winminwidth=1
+set winheight=1 winwidth=20 winminheight=1 winminwidth=1 shortmess=filnxtToOF
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
+nohlsearch
 let g:this_session = v:this_session
 let g:this_obsession = v:this_session
 doautoall SessionLoadPost
