@@ -41,11 +41,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 11 - ((10 * winheight(0) + 23) / 47)
+let s:l = 9 - ((8 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 11
+keepjumps 9
 normal! 0
 wincmd w
 argglobal
@@ -60,12 +60,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 5 - ((4 * winheight(0) + 23) / 47)
+let s:l = 113 - ((22 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 5
-normal! 02|
+keepjumps 113
+normal! 0
 wincmd w
 argglobal
 if bufexists("lua/plugins/lualine.lua") | buffer lua/plugins/lualine.lua | else | edit lua/plugins/lualine.lua | endif
@@ -86,6 +86,7 @@ normal! zt
 keepjumps 25
 normal! 0
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 64 + 96) / 192)
 exe 'vert 2resize ' . ((&columns * 63 + 96) / 192)
 exe 'vert 3resize ' . ((&columns * 63 + 96) / 192)
@@ -111,7 +112,6 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
-nohlsearch
 let g:this_session = v:this_session
 let g:this_obsession = v:this_session
 doautoall SessionLoadPost

@@ -110,11 +110,11 @@ return require('packer').startup(function()
 
 
   --- Appearence ---------------------------
-  use { 
-    'nvim-treesitter/nvim-treesitter',
-    run = ':tsupdate',
-    config = function() require'plugins.treesitter' end
-  }
+  -- use { 
+  --   'nvim-treesitter/nvim-treesitter',
+  --   run = ':tsupdate',
+  --   config = function() require'plugins.treesitter' end
+  -- }
   -----------------------------------------------------
 
 
