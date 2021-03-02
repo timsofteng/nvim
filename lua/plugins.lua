@@ -1,4 +1,4 @@
--- Auto install packer.nvim if not exists
+--Auto install packer.nvim if not exists
 local execute = vim.api.nvim_command
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
@@ -6,13 +6,17 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
 end
 
+ vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
+
 -- Only required if you have packer in your `opt` pack
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
+vim.cmd [[packadd packer.nvim]]
+
+--vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
 
 return require('packer').startup(function()
 
   -- Packer can manage itself as an optional plugin
-  use {'wbthomason/packer.nvim'}
+  use {'wbthomason/packer.nvim', opt = true}
 
 
   --- Project and Sessions ---------------------------
@@ -50,7 +54,10 @@ return require('packer').startup(function()
 
   --- LSP and Completion ---------------------------
   use { 'neovim/nvim-lspconfig' }
-  use { 'hrsh7th/nvim-compe' }
+  use { 
+    'hrsh7th/nvim-compe',
+    config = function() require'plugins.compe' end
+  }
   --map with lua
   use { 'svermeulen/vimpeccable' }
   -----------------------------------------------------
@@ -69,7 +76,8 @@ return require('packer').startup(function()
   -- Fuzzy finder
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+    config = function() require'plugins.telescope' end
   }
   -----------------------------------------------------
 
@@ -77,7 +85,10 @@ return require('packer').startup(function()
 
   --- Git ---------------------------
   use { 'lambdalisue/gina.vim' }
-  use { 'mhinz/vim-signify' }
+  use { 
+    'mhinz/vim-signify',
+    config = function() require'plugins.signify' end
+  }
   -----------------------------------------------------
 
 
@@ -87,13 +98,23 @@ return require('packer').startup(function()
   --use { 'lifepillar/vim-solarized8' }
   --Plug 'morhetz/gruvbox'
   use { 'lifepillar/vim-gruvbox8' }
+  --use { 'tjdevries/colorbuddy.vim' }
+  --use { 'tjdevries/gruvbuddy.nvim' }
   --Stautus bar
-  use { 'rbong/vim-crystalline' }
+  --use { 'rbong/vim-crystalline' }
+  use { 
+    'hoob3rt/lualine.nvim', 
+    config = function() require'plugins.lualine' end
+  }
   -----------------------------------------------------
 
 
   --- Appearence ---------------------------
-  use { 'nvim-treesitter/nvim-treesitter' }
+  use { 
+    'nvim-treesitter/nvim-treesitter',
+    run = ':tsupdate',
+    config = function() require'plugins.treesitter' end
+  }
   -----------------------------------------------------
 
 

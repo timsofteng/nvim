@@ -20,10 +20,16 @@ setopt('o', 'smartcase', true)
 
 -- -- Enable mouse support
 setopt('o', 'mouse', 'a')
-
+--highligh cursor line
 setopt('o', 'cursorline', true)
 
 setopt('o', 'scrolloff', 5)
+--correct tab options
+setopt('o', 'tabstop', 2)
+setopt('o', 'shiftwidth', 2)
+setopt('o', 'expandtab', true)
+
+setopt('o', 'autoindent', true)
 
 --temporary solution from resizing for tmux
 vim.api.nvim_exec([[

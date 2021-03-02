@@ -3,7 +3,7 @@ local vimp = require('vimp')
 vim.g.mapleader = ' '
 
 -- Edit vimr configuration file
-vimp.nnoremap('confe', [[:vs $HOME/.config/nvim/init.lua<cr>]])
+-- vimp.nnoremap('confe', [[:vs $HOME/.config/nvim/init.lua<cr>]])
 -- Reload vims configuration file
 vimp.nnoremap('confr', [[:source $HOME/.config/nvim/init.lua<cr>]])
 
@@ -14,7 +14,7 @@ vimp.nnoremap('confr', [[:source $HOME/.config/nvim/init.lua<cr>]])
 -- vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 --
 -- "disable highlighting by double Esc
--- nnoremap <Esc><Esc> :noh <CR>
+-- vimp.nnoremap ('<Esc><Esc>', [[:noh <CR>])
 --
 -- "write with sudo 
 -- command -nargs=0 SUw w !sudo tee %
@@ -25,5 +25,4 @@ vimp.nnoremap('confr', [[:source $HOME/.config/nvim/init.lua<cr>]])
 vimp.nnoremap('<Leader>bc', [[:DeleteHiddenBuffers<cr>]])
 vimp.nnoremap('<Leader>=', [[:Prettier<cr>]])
 vimp.nnoremap('<Leader>z', [[:MaximizerToggle<cr>]])
-vimp.nmap('<C-p>', [[:Fern . -reveal=% -drawer -toggle <CR>
-]])
+vimp.nmap('<C-p>', [[:Fern . -reveal=% -drawer -toggle <CR>]])
