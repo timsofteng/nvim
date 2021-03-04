@@ -54,7 +54,11 @@ return require('packer').startup(function()
 
 
   --- LSP and Completion ---------------------------
-  use { 'neovim/nvim-lspconfig' }
+  use { 
+    'neovim/nvim-lspconfig',
+    config = function() require'plugins.lsp' end
+  }
+
   use { 
     'hrsh7th/nvim-compe',
     config = function() require'plugins.compe' end
@@ -161,7 +165,6 @@ return require('packer').startup(function()
 
 
   ---- Tmux Integration -------------------------------
-  use { 'tmux-plugins/vim-tmux-focus-events' }
   use { 'christoomey/vim-tmux-navigator' }
   -----------------------------------------------------
 

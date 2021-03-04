@@ -9,23 +9,20 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +115 ~/.config/nvim/lua/plugins.lua
-badd +17 lua/plugins/lualine.lua
+badd +19 lua/plugins/lualine.lua
 badd +1 lua/map.lua
 badd +13 init.vim
-badd +1 lua/plugins/signify.lua
+badd +4 lua/plugins/signify.lua
 badd +2 initt.lua
-badd +1 init.lua
 badd +1 lua/colorscheme.lua
+badd +1 lua/plugins/lsp.lua
 argglobal
 %argdel
-edit lua/plugins/signify.lua
+edit lua/plugins/lsp.lua
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
-wincmd _ | wincmd |
-vsplit
-2wincmd h
-wincmd w
+1wincmd h
 wincmd w
 set nosplitbelow
 set nosplitright
@@ -34,10 +31,32 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 63 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 63 + 96) / 192)
-exe 'vert 3resize ' . ((&columns * 64 + 96) / 192)
+exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
+exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
 argglobal
+balt ~/.config/nvim/lua/plugins.lua
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 11 - ((10 * winheight(0) + 24) / 49)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 11
+normal! 046|
+wincmd w
+argglobal
+if bufexists("~/.config/nvim/lua/plugins.lua") | buffer ~/.config/nvim/lua/plugins.lua | else | edit ~/.config/nvim/lua/plugins.lua | endif
+if &buftype ==# 'terminal'
+  silent file ~/.config/nvim/lua/plugins.lua
+endif
 balt init.lua
 setlocal fdm=manual
 setlocal fde=0
@@ -49,62 +68,16 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 4 - ((3 * winheight(0) + 23) / 47)
+let s:l = 101 - ((5 * winheight(0) + 24) / 49)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 4
-normal! 039|
+keepjumps 101
+normal! 04|
 wincmd w
-argglobal
-if bufexists("~/.config/nvim/lua/plugins.lua") | buffer ~/.config/nvim/lua/plugins.lua | else | edit ~/.config/nvim/lua/plugins.lua | endif
-if &buftype ==# 'terminal'
-  silent file ~/.config/nvim/lua/plugins.lua
-endif
-balt lua/colorscheme.lua
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 104 - ((25 * winheight(0) + 23) / 47)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 104
-normal! 03|
-wincmd w
-argglobal
-if bufexists("lua/plugins/lualine.lua") | buffer lua/plugins/lualine.lua | else | edit lua/plugins/lualine.lua | endif
-if &buftype ==# 'terminal'
-  silent file lua/plugins/lualine.lua
-endif
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 17 - ((5 * winheight(0) + 23) / 47)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 17
-normal! 0
-wincmd w
-3wincmd w
-exe 'vert 1resize ' . ((&columns * 63 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 63 + 96) / 192)
-exe 'vert 3resize ' . ((&columns * 64 + 96) / 192)
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
+exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
