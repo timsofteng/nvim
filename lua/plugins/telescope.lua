@@ -4,7 +4,7 @@ local actions = require 'telescope.actions'
 local builtinPickers = require('telescope.builtin')
 
 vimp.nnoremap('<leader>ff', builtinPickers.find_files)
-vimp.nnoremap('<leader>fr', builtinPickers.live_grep)
+vimp.nnoremap('<leader>fg', builtinPickers.live_grep)
 vimp.nnoremap('<leader>bb', builtinPickers.buffers)
 vimp.nnoremap('<leader>fb', builtinPickers.file_browser)
 
@@ -16,8 +16,12 @@ local cfg = {
     i = {
       ['<C-K>'] = actions.move_selection_previous,
       ['<C-J>'] = actions.move_selection_next,
-      ['<Esc>'] = actions.close,
+      -- ['<Esc>'] = actions.close,
     },
+    n = {
+      ['<Esc>'] = false,
+      ['<C-c>'] = actions.close,
+    }
   },
 }
 

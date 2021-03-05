@@ -36,6 +36,7 @@ return require('packer').startup(function()
   --- File Tree ---------------------------
   use {  'lambdalisue/fern.vim' }
   use {  'lambdalisue/fern-git-status.vim' }
+  --use { 'kyazdani42/nvim-tree.lua' }
   --icons
   --use { 'lambdalisue/nerdfont.vim' }
   --use { 'lambdalisue/fern-renderer-nerdfont.vim' }
@@ -82,6 +83,10 @@ return require('packer').startup(function()
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
     config = function() require'plugins.telescope' end
   }
+  use { 
+    'phaazon/hop.nvim', 
+    config = function() require'plugins.hop' end
+  }
   -----------------------------------------------------
 
 
@@ -102,13 +107,13 @@ return require('packer').startup(function()
   use { 'lifepillar/vim-gruvbox8' }
   --use { 'tjdevries/colorbuddy.vim' }
   --use { 'tjdevries/gruvbuddy.nvim' }
-  use { 'sainnhe/sonokai' }
+  -- use { 'sainnhe/sonokai' }
   --Stautus bar
-  --use { 'rbong/vim-crystalline' }
-  use { 
-    'hoob3rt/lualine.nvim', 
-    config = function() require'plugins.lualine' end
-  }
+  use { 'rbong/vim-crystalline' }
+  -- use { 
+  --   'hoob3rt/lualine.nvim', 
+  --   config = function() require'plugins.lualine' end
+  -- }
   -----------------------------------------------------
 
 
@@ -127,21 +132,21 @@ return require('packer').startup(function()
   --commenting tool
   use { 'tomtom/tcomment_vim' }
   use { 'jiangmiao/auto-pairs' }
-  use { 'alvan/vim-closetag' }
-  --jump beetwen tags
+  -- use { 'alvan/vim-closetag' }
+  -- --jump beetwen tags
   use { 'andymass/vim-matchup' }
   --surrounder
   use { 'tpope/vim-surround' }
   --repeat by "." for custom plugins
   use { 'tpope/vim-repeat' }
-  --align
-  use { 'junegunn/vim-easy-align' }
+  -- --align
+  -- use { 'junegunn/vim-easy-align' }
   -----------------------------------------------------
 
 
   ---- Writers work -----------------------------------
-  use { 'junegunn/goyo.vim' }
-  use { 'junegunn/limelight.vim' }
+  -- use { 'junegunn/goyo.vim' }
+  -- use { 'junegunn/limelight.vim' }
   --markdown
   --use { 'godlygeek/tabular' }
   --use { 'plasticboy/vim-markdown' }
@@ -150,7 +155,10 @@ return require('packer').startup(function()
 
   ---- Snippets & Emmet -------------------------------
   --snippets
-  use { 'hrsh7th/vim-vsnip' }
+  use { 
+    'hrsh7th/vim-vsnip',
+    requires = {{'sdras/vue-vscode-snippets'}},
+  }
   use { 'hrsh7th/vim-vsnip-integ' }
 
   --emmet
