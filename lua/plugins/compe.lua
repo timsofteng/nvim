@@ -5,12 +5,13 @@ compe.setup {
   autocomplete = true;
   min_length = 2;
   preselect = 'disable';
-  documentation = false;
+  -- documentation = false;
 
   source = {
     buffer = true;
     nvim_lsp = true;
     vim_lsc = true;
     vsnip = true;
+    treesitter = true;
   }
 }

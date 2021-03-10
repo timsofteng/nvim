@@ -4,6 +4,7 @@ local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+  execute 'packadd packer.nvim'
 end
 
  vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
@@ -46,8 +47,6 @@ return require('packer').startup(function()
 
 
   --- Buffers ---------------------------
-  --closing buffer without closing window
-  --Plug 'qpkorr/vim-bufkill'
   use { 'arithran/vim-delete-hidden-buffers' }
   use { 'szw/vim-maximizer' }
   -----------------------------------------------------
@@ -105,15 +104,12 @@ return require('packer').startup(function()
   --themes
   --use { 'lifepillar/vim-solarized8' }
   use { 'lifepillar/vim-gruvbox8' }
-  --use { 'tjdevries/colorbuddy.vim' }
-  --use { 'tjdevries/gruvbuddy.nvim' }
-  -- use { 'sainnhe/sonokai' }
   --Stautus bar
-  use { 'rbong/vim-crystalline' }
-  -- use { 
-  --   'hoob3rt/lualine.nvim', 
-  --   config = function() require'plugins.lualine' end
-  -- }
+  -- use { 'rbong/vim-crystalline' }
+  use { 
+    'hoob3rt/lualine.nvim', 
+    config = function() require'plugins.lualine' end
+  }
   -----------------------------------------------------
 
 
@@ -157,7 +153,7 @@ return require('packer').startup(function()
   --snippets
   use { 
     'hrsh7th/vim-vsnip',
-    requires = {{'sdras/vue-vscode-snippets'}},
+    config = function() require'plugins.vsnip' end
   }
   use { 'hrsh7th/vim-vsnip-integ' }
 

@@ -61,6 +61,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/tim/.local/share/nvim/site/pack/packer/start/hop.nvim"
   },
+  ["lualine.nvim"] = {
+    config = { "\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20plugins.lualine\frequire\0" },
+    loaded = true,
+    path = "/home/tim/.local/share/nvim/site/pack/packer/start/lualine.nvim"
+  },
   ["nvim-compe"] = {
     config = { "\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18plugins.compe\frequire\0" },
     loaded = true,
@@ -97,10 +102,6 @@ _G.packer_plugins = {
     config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22plugins.telescope\frequire\0" },
     loaded = true,
     path = "/home/tim/.local/share/nvim/site/pack/packer/start/telescope.nvim"
-  },
-  ["vim-crystalline"] = {
-    loaded = true,
-    path = "/home/tim/.local/share/nvim/site/pack/packer/start/vim-crystalline"
   },
   ["vim-delete-hidden-buffers"] = {
     loaded = true,
@@ -148,6 +149,7 @@ _G.packer_plugins = {
     path = "/home/tim/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator"
   },
   ["vim-vsnip"] = {
+    config = { "\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18plugins.vsnip\frequire\0" },
     loaded = true,
     path = "/home/tim/.local/share/nvim/site/pack/packer/start/vim-vsnip"
   },
@@ -158,25 +160,25 @@ _G.packer_plugins = {
   vimpeccable = {
     loaded = true,
     path = "/home/tim/.local/share/nvim/site/pack/packer/start/vimpeccable"
-  },
-  ["vue-vscode-snippets"] = {
-    loaded = true,
-    path = "/home/tim/.local/share/nvim/site/pack/packer/start/vue-vscode-snippets"
   }
 }
 
--- Config for: nvim-compe
-try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18plugins.compe\frequire\0", "config", "nvim-compe")
--- Config for: nvim-treesitter
-try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.treesitter\frequire\0", "config", "nvim-treesitter")
--- Config for: vim-signify
-try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20plugins.signify\frequire\0", "config", "vim-signify")
--- Config for: nvim-lspconfig
-try_loadstring("\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16plugins.lsp\frequire\0", "config", "nvim-lspconfig")
+-- Config for: vim-vsnip
+try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18plugins.vsnip\frequire\0", "config", "vim-vsnip")
 -- Config for: hop.nvim
 try_loadstring("\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16plugins.hop\frequire\0", "config", "hop.nvim")
+-- Config for: nvim-treesitter
+try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.treesitter\frequire\0", "config", "nvim-treesitter")
+-- Config for: nvim-lspconfig
+try_loadstring("\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16plugins.lsp\frequire\0", "config", "nvim-lspconfig")
+-- Config for: lualine.nvim
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20plugins.lualine\frequire\0", "config", "lualine.nvim")
 -- Config for: telescope.nvim
 try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22plugins.telescope\frequire\0", "config", "telescope.nvim")
+-- Config for: vim-signify
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20plugins.signify\frequire\0", "config", "vim-signify")
+-- Config for: nvim-compe
+try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18plugins.compe\frequire\0", "config", "nvim-compe")
 END
 
 catch
