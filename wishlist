@@ -1,0 +1,17 @@
+1. TSserver multiple definition but(qf-list).
+3. Git integraion.
+4. Rename of file lsp.
+5. Correct indent.
+7. Adding good statusline.
++-8. nvim-tree repair focus.
+9. Choose good git signs plugin (vgit / gitsigns).
+10. Indent on surround.
+11. LSP-snippets.
+12. Choose method of mapping.
+13. Slow startup.
+
+//troubles
+1. Autoindent
+2. Weird lines in vue.
+3. Styled components in tsx.
+5. Vue language server works awfull.
