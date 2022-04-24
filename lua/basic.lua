@@ -44,3 +44,9 @@ function ToggleQuickFix()
   else vim.cmd("cclose") end
 end
 
+vim.api.nvim_create_autocmd({"FileType"}, {
+  pattern = "go",
+  command = "compiler go",
+})
+
+

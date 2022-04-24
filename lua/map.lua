@@ -11,7 +11,14 @@ keymap('n', ']d', vim.diagnostic.goto_next)
 -- keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next({ float =  { border = "rounded" }})<CR>')
 keymap('n', '<leader>q', vim.diagnostic.setloclist)
 
-keymap('n', '<Leader>qq',  require("utils").toggleQuickFix, {noremap = true})
+-- quickfix
+keymap('n', '<Leader>qo', ":copen<cr>", {noremap = true})
+keymap('n', '<Leader>qq', ":ccl<cr>", {noremap = true})
+keymap('n', '[q', ":cprev<cr>", {noremap = true})
+keymap('n', ']q', ":cnext<cr>", {noremap = true})
+keymap('n', '[Q', ":cold<cr>", {noremap = true})
+keymap('n', ']Q', ":cnext<cr>", {noremap = true})
+-- keymap('n', '<Leader>qq',  require("utils").toggleQuickFix, {noremap = true})
 
 
 -- "Disable ability change all letters to lowercase
@@ -22,8 +29,6 @@ keymap('n', '<Leader>qq',  require("utils").toggleQuickFix, {noremap = true})
 --
 --"disable highlighting by double Esc
 keymap('n', '<Esc>', ":noh<cr>", {noremap = true})
-keymap('n', '[q', ":cprev<cr>", {noremap = true})
-keymap('n', ']q', ":cnext<cr>", {noremap = true})
 keymap('n', '[b', ":bprev<cr>", {noremap = true})
 keymap('n', ']b', ":bnext<cr>", {noremap = true})
 --
