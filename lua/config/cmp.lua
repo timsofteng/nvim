@@ -36,12 +36,11 @@ cmp.setup {
     completion = { -- rounded border; thin-style scrollbar
       border = 'single',
       winhighlight = 'FloatBorder:Normal,NormalFloat:Normal,CursorLine:Visual,Search:None',
-      -- scrollbar = '║',
     },
     documentation = { -- no border; native-style scrollbar
       border = 'single',
       winhighlight = 'FloatBorder:Normal,NormalFloat:Normal,CursorLine:Visual,Search:None',
-      -- scrollbar = '',
+      -- scrollbar = '║',
       -- other options
     },
   },
