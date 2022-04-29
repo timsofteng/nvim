@@ -66,8 +66,8 @@ local list = {
 nvim_tree.setup{
   view = {
     mappings = {
-    signcolumn = "no",
-      list = list,
+    -- signcolumn = "no",
+    --   list = list,
     },
   },
   renderer = {

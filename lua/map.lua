@@ -7,8 +7,6 @@ local keymap = vim.keymap.set
 keymap('n', '<leader>e', vim.diagnostic.open_float)
 keymap('n', '[d', vim.diagnostic.goto_prev)
 keymap('n', ']d', vim.diagnostic.goto_next)
--- keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev({ float =  { border = "rounded" }})<CR>')
--- keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next({ float =  { border = "rounded" }})<CR>')
 keymap('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- quickfix
@@ -28,7 +26,7 @@ keymap('n', ']Q', ":cnext<cr>", {noremap = true})
 -- vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 --
 --"disable highlighting by double Esc
-keymap('n', '<Esc>', ":noh<cr>", {noremap = true})
+keymap('n', '<Esc><Esc>', ":noh<cr>", {noremap = true})
 keymap('n', '[b', ":bprev<cr>", {noremap = true})
 keymap('n', ']b', ":bnext<cr>", {noremap = true})
 --
@@ -43,3 +41,4 @@ keymap('n', '<Leader>=', ":Neoformat<cr>", {noremap = true})
 keymap('n', '<Leader>z', ":ZenMode<cr>", {noremap = true})
 keymap('n', '<Leader>cp', ":let @+=expand('%')<cr>", {noremap = true})
 keymap('n', '<Leader>cP', ":let @+=expand('%:p')<cr>", {noremap = true})
+keymap('n', '<Leader>gb', ":G blame<cr>", {noremap = true})

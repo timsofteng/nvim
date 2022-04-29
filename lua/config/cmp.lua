@@ -13,6 +13,14 @@ local confirm = function(fallback)
   end
 end
 
+local allBuffersSource  = function()
+  local bufs = {}
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    bufs[vim.api.nvim_win_get_buf(win)] = true
+  end
+  return vim.tbl_keys(bufs)
+end
+
 cmp.setup {
   completion = {
     autocomplete = false,
@@ -48,12 +56,16 @@ cmp.setup {
             sources = {
               { 
                 name = 'buffer',
+                option = {
+                  get_bufnrs = allBuffersSource,
+                }
               }, 
             }
           }
         })
       end
     end,
+
     ['<C-p>'] = function()
       if cmp.visible() then
         cmp.select_prev_item({behavior = cmp.SelectBehavior.Select})
@@ -67,25 +79,21 @@ cmp.setup {
         })
       end
     end,
-    ['<C-x><C-s>'] = cmp.mapping.complete({
+
+    ['<C-s>'] = cmp.mapping.complete({
       config = {
         sources = {
           { name = 'luasnip' }
         }
       }
     }),
-    ['<C-x><C-t>'] = cmp.mapping.complete({
-      config = {
-        sources = {
-          { name = 'tmux' }
-        }
-      }
-    }),
+
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-x><C-o>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
+    ['<C-c>'] = cmp.mapping.close(),
     ['<C-l>'] = confirm,
+    ['<C-e>'] = confirm,
     ['<CR>'] = confirm,
 
     ['<C-j>'] = cmp.mapping(function(fallback)
@@ -109,13 +117,9 @@ cmp.setup {
     { name = 'luasnip' },
     { 
       name = 'buffer',
-      get_bufnrs = function()
-        local bufs = {}
-        for _, win in ipairs(vim.api.nvim_list_wins()) do
-          bufs[vim.api.nvim_win_get_buf(win)] = true
-        end
-        return vim.tbl_keys(bufs)
-      end
+      option = {
+        get_bufnrs = allBuffersSource,
+      }
     }, 
     { name = 'tmux' }, 
   },

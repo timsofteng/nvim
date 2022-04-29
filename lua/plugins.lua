@@ -80,7 +80,7 @@ return require('packer').startup({function(use)
 
   use { 
     'j-hui/fidget.nvim',
-    config = function() require'fidget'.setup{} end
+    config = function() require'config.fidget' end
   }
   -- use { 'mattn/emmet-vim' }
 
@@ -92,6 +92,7 @@ return require('packer').startup({function(use)
   --- Linters ---------------------------
   use { 'sbdchd/neoformat' }
   use { 'tpope/vim-sleuth' }
+  use { 'tpope/vim-dispatch' }
   -- use { 'jose-elias-alvarez/null-ls.nvim',
   --   config = function() require'config.null-ls' end
   -- }
@@ -130,7 +131,10 @@ return require('packer').startup({function(use)
 
 
   --- Git ---------------------------
-  -- use { 'tpope/vim-fugitive' }
+  use { 
+    'tpope/vim-fugitive',
+    config = function() require'config.fugitive' end
+  }
   -- use { 
   --   'TimUntersberger/neogit',
   --   config = function()
@@ -207,12 +211,16 @@ return require('packer').startup({function(use)
 
   ---- Writers work -----------------------------------
   use {'lervag/vimtex'}
+  -- use {
+  --   "nvim-neorg/neorg",
+  --   config = function() require'config.neorg' end
+  -- }
   -----------------------------------------------------
 
 
   ---- Integrations -----------------------------------
   -- use { 'christoomey/vim-tmux-navigator' }
-  use { 'NTBBloodbath/rest.nvim' }
+  -- use { 'NTBBloodbath/rest.nvim' }
 
 end,
   config = {
