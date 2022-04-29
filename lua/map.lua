@@ -3,6 +3,8 @@ vim.g.mapleader = ' '
 
 local keymap = vim.keymap.set
 
+opts = {noremap = true, silent = true}
+
 -- Diagnostic keymaps
 keymap('n', '<leader>e', vim.diagnostic.open_float)
 keymap('n', '[d', vim.diagnostic.goto_prev)
@@ -10,12 +12,12 @@ keymap('n', ']d', vim.diagnostic.goto_next)
 keymap('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- quickfix
-keymap('n', '<Leader>qo', ":copen<cr>", {noremap = true})
-keymap('n', '<Leader>qq', ":ccl<cr>", {noremap = true})
-keymap('n', '[q', ":cprev<cr>", {noremap = true})
-keymap('n', ']q', ":cnext<cr>", {noremap = true})
-keymap('n', '[Q', ":cold<cr>", {noremap = true})
-keymap('n', ']Q', ":cnext<cr>", {noremap = true})
+keymap('n', '<Leader>qo', ":copen<cr>", opts)
+keymap('n', '<Leader>qq', ":ccl<cr>", opts)
+keymap('n', '[q', ":cprev<cr>", opts)
+keymap('n', ']q', ":cnext<cr>", opts)
+keymap('n', '[Q', ":cold<cr>", opts)
+keymap('n', ']Q', ":cnext<cr>", opts)
 -- keymap('n', '<Leader>qq',  require("utils").toggleQuickFix, {noremap = true})
 
 
@@ -26,9 +28,9 @@ keymap('n', ']Q', ":cnext<cr>", {noremap = true})
 -- vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 --
 --"disable highlighting by double Esc
-keymap('n', '<Esc><Esc>', ":noh<cr>", {noremap = true})
-keymap('n', '[b', ":bprev<cr>", {noremap = true})
-keymap('n', ']b', ":bnext<cr>", {noremap = true})
+keymap('n', '<Esc><Esc>', ":noh<cr>", opts)
+keymap('n', '[b', ":bprev<cr>", opts)
+keymap('n', ']b', ":bnext<cr>", opts)
 --
 -- "write with sudo 
 -- command -nargs=0 SUw w !sudo tee %
@@ -36,9 +38,9 @@ keymap('n', ']b', ":bnext<cr>", {noremap = true})
 -- "
 
 --for some plugins
-keymap('n', '<Leader>bc', ":DeleteHiddenBuffers<cr>", {noremap = true})
-keymap('n', '<Leader>=', ":Neoformat<cr>", {noremap = true})
-keymap('n', '<Leader>z', ":ZenMode<cr>", {noremap = true})
-keymap('n', '<Leader>cp', ":let @+=expand('%')<cr>", {noremap = true})
-keymap('n', '<Leader>cP', ":let @+=expand('%:p')<cr>", {noremap = true})
-keymap('n', '<Leader>gb', ":G blame<cr>", {noremap = true})
+keymap('n', '<Leader>bc', ":DeleteHiddenBuffers<cr>", opts)
+keymap('n', '<Leader>=', ":Neoformat<cr>", opts)
+keymap('n', '<Leader>z', ":ZenMode<cr>", opts)
+keymap('n', '<Leader>cp', ":let @+=expand('%')<cr>", opts)
+keymap('n', '<Leader>cP', ":let @+=expand('%:p')<cr>", opts)
+keymap('n', '<Leader>gb', ":G blame<cr>", opts)
