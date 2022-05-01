@@ -131,10 +131,7 @@ return require('packer').startup({function(use)
 
 
   --- Git ---------------------------
-  use { 
-    'tpope/vim-fugitive',
-    config = function() require'config.fugitive' end
-  }
+  use { 'tpope/vim-fugitive'}
   -- use { 
   --   'TimUntersberger/neogit',
   --   config = function()

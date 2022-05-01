@@ -137,17 +137,24 @@ cmp.setup.cmdline("/", {
     ['<CR>'] = {c = confirm},
   }),
   sources = {
-    { name = "buffer" },
+    { 
+      name = "buffer",
+      option = {
+        get_bufnrs = allBuffersSource,
+      }
+    },
   },
 })
 
 cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline({
-    ['<Tab>'] = {c = function()
+    ['<C-n>'] = {c = function(fallback)
       if cmp.visible() then
         cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
+      -- elseif vim.fn.histget(':', vim.fn.histnr(':') + 1) == '' then
+      --   cmp.complete()
       else
-        cmp.complete()
+        fallback()
       end
     end },
     ['<C-l>'] = {c = confirm},
