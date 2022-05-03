@@ -1,5 +1,4 @@
--- require('impatient')
-require'impatient'.enable_profile()
+pcall(require, 'impatient')
 
 -- basic options
 require'basic'
@@ -9,8 +8,6 @@ require'compilers'
 
 --plugin manager init
 require'plugins'
-
--- vim.g.vimtex_compiler_method = 'tectonic'
 
 -- map
 require'map'

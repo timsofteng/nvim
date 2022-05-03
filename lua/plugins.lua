@@ -12,10 +12,11 @@ return require('packer').startup({function(use)
 
   -- Packer can manage itself as an optional plugin
   use {'wbthomason/packer.nvim'}
+
+  --- optimization ---------------------------
   use 'lewis6991/impatient.nvim'
 
   --- Project and Sessions ---------------------------
-  --sessions
   use { 'tpope/vim-obsession' }
 
   --UNIX command in vim
@@ -29,10 +30,10 @@ return require('packer').startup({function(use)
     'mbbill/undotree',
     config = function() require'config.undotree' end
   }
-  -- use {
-  --   'kevinhwang91/nvim-bqf',
-  --   config = function() require'config.bqf' end
-  -- }
+  use {
+    'kevinhwang91/nvim-bqf',
+    config = function() require'config.bqf' end
+  }
   -----------------------------------------------------
 
 
@@ -135,12 +136,12 @@ return require('packer').startup({function(use)
 
   --- Git ---------------------------
   use { 'tpope/vim-fugitive'}
-  -- use { 
-  --   'TimUntersberger/neogit',
-  --   config = function()
-  --     require'config.neogit'
-  --   end
-  -- }
+  use { 
+    'TimUntersberger/neogit',
+    config = function()
+      require'config.neogit'
+    end
+  }
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
