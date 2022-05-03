@@ -152,6 +152,7 @@ return require('packer').startup({function(use)
     'sindrets/diffview.nvim',
     config = function() require'config.diffview' end
   }
+  use 'emmanueltouzery/agitator.nvim'
   -- use { 'tanvirtin/vgit.nvim',
   --   config = function() require'config.vgit' end
   -- }
