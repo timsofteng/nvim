@@ -4,6 +4,13 @@ local keymap = vim.keymap.set
 keymap('n', '<Leader>p', [[:NvimTreeToggle <CR>]], {})
 keymap('n', '<Leader>P', [[:NvimTreeFindFile<CR>]], {})
 
+vim.g.nvim_tree_show_icons = {
+  git = 1,
+  folders = 1,
+  files = 0,
+  folder_arrows = 0,
+}
+
 vim.g.nvim_tree_icons = {
   folder = {
     arrow_open = "v",
@@ -24,7 +31,6 @@ vim.g.nvim_tree_icons = {
     deleted = "D",
     ignored="I"
   },
-
 }
 
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
@@ -65,19 +71,14 @@ local list = {
 
 nvim_tree.setup{
   view = {
+    signcolumn = "no",
     mappings = {
-    -- signcolumn = "no",
-    --   list = list,
+      list = list,
     },
   },
   renderer = {
     indent_markers = {
       enable = true,
-      -- icons = {
-      --   corner = "└ ",
-      --   edge = "│ ",
-      --   none = "  ",
-      -- },
     },
   },
 }

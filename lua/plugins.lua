@@ -29,10 +29,10 @@ return require('packer').startup({function(use)
     'mbbill/undotree',
     config = function() require'config.undotree' end
   }
-  use {
-    'kevinhwang91/nvim-bqf',
-    config = function() require'config.bqf' end
-  }
+  -- use {
+  --   'kevinhwang91/nvim-bqf',
+  --   config = function() require'config.bqf' end
+  -- }
   -----------------------------------------------------
 
 
@@ -93,6 +93,9 @@ return require('packer').startup({function(use)
   use { 'sbdchd/neoformat' }
   use { 'tpope/vim-sleuth' }
   use { 'tpope/vim-dispatch' }
+  use { 'mfussenegger/nvim-lint',
+    config = function() require'config.nvim-lint' end
+  }
   -- use { 'jose-elias-alvarez/null-ls.nvim',
   --   config = function() require'config.null-ls' end
   -- }
@@ -165,6 +168,10 @@ return require('packer').startup({function(use)
     "ellisonleao/gruvbox.nvim",
     config = function() require'config.colorscheme' end
   }
+  -- use { 
+  --   "luisiacc/gruvbox-baby",
+  --   config = function() require'config.colorscheme' end
+  -- }
   use { 
     'nvim-treesitter/nvim-treesitter',
     -- run = ':TSUpdate',
@@ -218,6 +225,7 @@ return require('packer').startup({function(use)
   ---- Integrations -----------------------------------
   -- use { 'christoomey/vim-tmux-navigator' }
   -- use { 'NTBBloodbath/rest.nvim' }
+  use 'tweekmonster/startuptime.vim'
 
 end,
   config = {

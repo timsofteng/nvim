@@ -148,13 +148,13 @@ cmp.setup.cmdline("/", {
 
 cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline({
-    ['<C-n>'] = {c = function(fallback)
+    ['<Tab>'] = {c = function(fallback)
       if cmp.visible() then
         cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
       -- elseif vim.fn.histget(':', vim.fn.histnr(':') + 1) == '' then
       --   cmp.complete()
       else
-        fallback()
+        cmp.complete()
       end
     end },
     ['<C-l>'] = {c = confirm},

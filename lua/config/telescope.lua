@@ -3,7 +3,7 @@ local actions = require 'telescope.actions'
 local keymap = vim.keymap.set
 local action_layout = require("telescope.actions.layout")
 
-local findFileCmd = "find_command=rg,--files"
+local findFileCmd = "find_command=rg,--hidden,--files"
 
 keymap('n', '<leader>ff', '<cmd>Telescope find_files '..findFileCmd..' <cr>', {noremap = true})
 keymap('n', '<leader>fc', '<cmd>Telescope live_grep<cr>', {noremap = true})
