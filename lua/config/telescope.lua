@@ -3,15 +3,18 @@ local actions = require 'telescope.actions'
 local keymap = vim.keymap.set
 local action_layout = require("telescope.actions.layout")
 
-local findFileCmd = "find_command=rg,--hidden,--files"
+local findFileCmd = "find_command=rg,--files"
 
-keymap('n', '<leader>ff', '<cmd>Telescope find_files '..findFileCmd..' <cr>', {noremap = true})
-keymap('n', '<leader>fc', '<cmd>Telescope live_grep<cr>', {noremap = true})
-keymap('n', '<leader>fg', '<cmd>Telescope git_files<cr>', {noremap = true})
-keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', {noremap = true})
-keymap('n', '<leader>fh', '<cmd>Telescope command_history<cr>', {noremap = true})
-keymap('n', '<leader>fm', '<cmd>Telescope marks<cr>', {noremap = true})
-keymap('n', '<leader>f.', '<cmd>Telescope resume<cr>', {noremap = true})
+local opts = {noremap = true, silent = true}
+
+keymap('n', '<leader>ff', '<cmd>Telescope find_files '..findFileCmd..' <cr>', opts)
+keymap('n', '<leader>fc', '<cmd>Telescope live_grep<cr>', opts)
+keymap('n', '<leader>fg', '<cmd>Telescope git_files<cr>', opts)
+keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
+keymap('n', '<leader>fh', '<cmd>Telescope command_history<cr>', opts)
+keymap('n', '<leader>fm', '<cmd>Telescope marks<cr>', opts)
+keymap('n', '<leader>f.', '<cmd>Telescope resume<cr>', opts)
+keymap('n', '<leader>fq', '<cmd>Telescope quickfixhistory<cr>', opts)
 
 telescope.setup { 
   defaults ={

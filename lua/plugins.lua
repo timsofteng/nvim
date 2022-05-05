@@ -15,6 +15,7 @@ return require('packer').startup({function(use)
 
   --- optimization ---------------------------
   use 'lewis6991/impatient.nvim'
+  use 'tweekmonster/startuptime.vim'
 
   --- Project and Sessions ---------------------------
   use { 'tpope/vim-obsession' }
@@ -227,7 +228,8 @@ return require('packer').startup({function(use)
   ---- Integrations -----------------------------------
   -- use { 'christoomey/vim-tmux-navigator' }
   -- use { 'NTBBloodbath/rest.nvim' }
-  use 'tweekmonster/startuptime.vim'
+  use 'tpope/vim-dadbod'
+  use 'kristijanhusak/vim-dadbod-ui'
 
 end,
   config = {
@@ -237,3 +239,4 @@ end,
     }
   }
 })
+

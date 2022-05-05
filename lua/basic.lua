@@ -15,6 +15,10 @@ vim.opt.updatetime = 250
 -- vim.opt.signcolumn = 'yes'
 vim.opt.termguicolors=true
 
+vim.opt.tabstop=2
+vim.opt.softtabstop=2
+vim.opt.shiftwidth=2
+
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
 
@@ -29,20 +33,4 @@ vim.diagnostic.config({
   float =  { border = "single" },
 })
 
-vim.api.nvim_create_autocmd({"VimResized"}, {
-  command = "wincmd = ",
-})
-
-
--- Highlight on yank
-local yankGrp = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-  command = "silent! lua vim.highlight.on_yank()",
-  group = yankGrp,
-})
-
-
-function ToggleQuickFix()
-  if vim.fn.empty(fn.filter(vim.fn.getwininfo(), "v:val.quickfix")) then vim.cmd("copen")
-  else vim.cmd("cclose") end
-end
+vim.g.dbs = {jeka_bot = 'postgres://tim@localhost:5432/tim'}

@@ -3,8 +3,8 @@ pcall(require, 'impatient')
 -- basic options
 require'basic'
 
--- compilers
-require'compilers'
+-- autocmds
+require'autocmds'
 
 --plugin manager init
 require'plugins'
