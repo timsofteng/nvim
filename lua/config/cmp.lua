@@ -13,6 +13,23 @@ local confirm = function(fallback)
   end
 end
 
+local snippetsKey = function() 
+  if cmp.visible() then
+    cmp.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    })
+  else
+    cmp.complete({
+      config = {
+        sources = {
+          { name = "luasnip" }
+        }
+      }
+    })
+  end
+end
+
 local allBuffersSource  = function()
   local bufs = {}
   for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -91,7 +108,7 @@ cmp.setup {
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-x><C-o>'] = cmp.mapping.complete(),
     ['<C-c>'] = cmp.mapping.close(),
-    ['<C-l>'] = confirm,
+    ['<C-l>'] = snippetsKey,
     ['<C-e>'] = confirm,
     ['<CR>'] = confirm,
 
