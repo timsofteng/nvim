@@ -18,6 +18,8 @@ keymap('n', '[q', ":cprev<cr>", opts)
 keymap('n', ']q', ":cnext<cr>", opts)
 keymap('n', '[Q', ":cold<cr>", opts)
 keymap('n', ']Q', ":cnext<cr>", opts)
+
+keymap('i', '<C-e>', "<C-o>$", opts)
 -- keymap('n', '<Leader>qq',  require("utils").toggleQuickFix, {noremap = true})
 
 
@@ -28,7 +30,7 @@ keymap('n', ']Q', ":cnext<cr>", opts)
 -- vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 --
 --"disable highlighting by double Esc
-keymap('n', '<Esc><Esc>', ":noh<cr>", opts)
+-- keymap('n', '<Esc><Esc>', ":noh<cr>", opts)
 keymap('n', '[b', ":bprev<cr>", opts)
 keymap('n', ']b', ":bnext<cr>", opts)
 --
@@ -45,6 +47,6 @@ keymap('n', '<Leader>cp', ":let @+=expand('%')<cr>", opts)
 keymap('n', '<Leader>cP', ":let @+=expand('%:p')<cr>", opts)
 -- keymap('n', '<Leader>gb', ":G blame<cr>", opts)
 keymap('n', '<Leader>gg', ":Neogit<cr>", opts)
-keymap('n', '<leader>gb', require('agitator').git_blame_toggle)
-keymap('n', '<leader>gt', require('agitator').git_time_machine)
-keymap('n', '<leader>go', require('agitator').open_file_git_branch)
+-- keymap('n', '<leader>gb', require('agitator').git_blame_toggle)
+-- keymap('n', '<leader>gt', require('agitator').git_time_machine)
+-- keymap('n', '<leader>go', require('agitator').open_file_git_branch)

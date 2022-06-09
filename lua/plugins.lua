@@ -92,11 +92,15 @@ return require('packer').startup({function(use)
 
 
   --- Linters ---------------------------
-  use { 'sbdchd/neoformat' }
-  use { 'tpope/vim-sleuth' }
-  use { 'tpope/vim-dispatch' }
-  use { 'mfussenegger/nvim-lint',
+ use { 'sbdchd/neoformat' }
+ use { 'tpope/vim-sleuth' }
+ use { 'tpope/vim-dispatch' }
+ use { 'mfussenegger/nvim-lint',
     config = function() require'config.nvim-lint' end
+  }
+  use {
+    'Vonr/align.nvim',
+    config = function() require'config.align' end
   }
   -- use { 'jose-elias-alvarez/null-ls.nvim',
   --   config = function() require'config.null-ls' end

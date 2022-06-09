@@ -14,20 +14,13 @@ local confirm = function(fallback)
 end
 
 local snippetsKey = function() 
-  if cmp.visible() then
-    cmp.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    })
-  else
-    cmp.complete({
-      config = {
-        sources = {
-          { name = "luasnip" }
-        }
+  cmp.complete({
+    config = {
+      sources = {
+        { name = "luasnip" }
       }
-    })
-  end
+    }
+  })
 end
 
 local allBuffersSource  = function()
@@ -174,8 +167,8 @@ cmp.setup.cmdline(":", {
         cmp.complete()
       end
     end },
-    ['<C-l>'] = {c = confirm},
     ['<CR>'] = {c = confirm},
+    ['<C-e>'] = {c = confirm},
   }),
   sources = {
     { name = "cmdline" },

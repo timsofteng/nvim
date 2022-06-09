@@ -4,32 +4,33 @@ local keymap = vim.keymap.set
 keymap('n', '<Leader>p', [[:NvimTreeToggle <CR>]], {})
 keymap('n', '<Leader>P', [[:NvimTreeFindFile<CR>]], {})
 
-vim.g.nvim_tree_show_icons = {
-  git = 1,
-  folders = 1,
-  files = 0,
-  folder_arrows = 0,
-}
-
-vim.g.nvim_tree_icons = {
-  folder = {
-    arrow_open = "v",
-    arrow_closed = ">",
-    default = '>', 
-    open = 'v', 
-    symlink =  '~',
-    empty = "",
-    empty_open = "",
-    symlink_open  = "",
+local icons = {
+  show = {
+    git = true,
+    folder = true,
+    file = false,
+    folder_arrow = false,
   },
-  git = {
-    unstaged = "M", 
-    staged = "A", 
-    unmerged = "U",
-    renamed = "R",
-    untracked = "?", 
-    deleted = "D",
-    ignored="I"
+  glyphs = {
+    folder = {
+      arrow_open = "v",
+      arrow_closed = ">",
+      default = '>', 
+      open = 'v', 
+      symlink =  '~',
+      empty = "",
+      empty_open = "",
+      symlink_open  = "",
+    },
+    git = {
+      unstaged = "M", 
+      staged = "A", 
+      unmerged = "U",
+      renamed = "R",
+      untracked = "?", 
+      deleted = "D",
+      ignored="I"
+    },
   },
 }
 
@@ -80,5 +81,6 @@ nvim_tree.setup{
     indent_markers = {
       enable = true,
     },
+    icons = icons,
   },
 }
