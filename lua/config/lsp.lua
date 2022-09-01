@@ -27,7 +27,7 @@ local handlers =  {
 }
 
 -- Enable the following language servers
-local servers = { 'gopls', 'vuels', 'pyright', 'tsserver', 'cssls', 'sumneko_lua' }
+local servers = { 'gopls', 'vuels', 'pylsp', 'cssls', 'sumneko_lua' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     autostart = false,
@@ -36,3 +36,14 @@ for _, lsp in ipairs(servers) do
     handlers = handlers,
   }
 end
+
+require("typescript").setup({
+  disable_commands = false, -- prevent the plugin from creating Vim commands
+  debug = false, -- enable debug logging for commands
+  server = { -- pass options to lspconfig's setup method
+    autostart = false,
+    on_attach = on_attach,
+    handlers = handlers,
+    capabilities = capabilities,
+  },
+})

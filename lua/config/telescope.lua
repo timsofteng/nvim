@@ -18,6 +18,7 @@ keymap('n', '<leader>fq', '<cmd>Telescope quickfixhistory<cr>', opts)
 
 telescope.setup { 
   defaults ={
+    layout_strategy = 'bottom_pane',
     sorting_strategy = 'ascending',
     scroll_strategy = 'cycle',
     borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},

@@ -88,15 +88,6 @@ cmp.setup {
         })
       end
     end,
-
-    ['<C-s>'] = cmp.mapping.complete({
-      config = {
-        sources = {
-          { name = 'luasnip' }
-        }
-      }
-    }),
-
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-x><C-o>'] = cmp.mapping.complete(),

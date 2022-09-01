@@ -13,6 +13,12 @@ return require('packer').startup({function(use)
   -- Packer can manage itself as an optional plugin
   use {'wbthomason/packer.nvim'}
 
+  use {'ggandor/leap.nvim'}
+  require('leap').set_default_keymaps()
+
+  use {'phaazon/hop.nvim'}
+  require'hop'.setup()
+
   --- optimization ---------------------------
   use 'lewis6991/impatient.nvim'
   use 'tweekmonster/startuptime.vim'
@@ -62,6 +68,8 @@ return require('packer').startup({function(use)
     'neovim/nvim-lspconfig',
     config = function() require'config.lsp' end
   }
+
+  use 'jose-elias-alvarez/typescript.nvim'
 
   use { 
     'hrsh7th/nvim-cmp',
@@ -234,6 +242,8 @@ return require('packer').startup({function(use)
   -- use { 'NTBBloodbath/rest.nvim' }
   use 'tpope/vim-dadbod'
   use 'kristijanhusak/vim-dadbod-ui'
+  use { "williamboman/mason.nvim" }
+  require("mason").setup()
 
 end,
   config = {

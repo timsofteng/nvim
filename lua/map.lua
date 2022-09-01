@@ -19,7 +19,12 @@ keymap('n', ']q', ":cnext<cr>", opts)
 keymap('n', '[Q', ":cold<cr>", opts)
 keymap('n', ']Q', ":cnext<cr>", opts)
 
+-- pipe selected to ix
+keymap('v', '<Leader>@', ":'<,'>w !ixi<cr>", opts)
+
+
 keymap('i', '<C-e>', "<C-o>$", opts)
+keymap('i', '<C-s>', "<C-o>:w<cr>", opts)
 -- keymap('n', '<Leader>qq',  require("utils").toggleQuickFix, {noremap = true})
 
 
@@ -45,7 +50,8 @@ keymap('n', '<Leader>=', ":Neoformat<cr>", opts)
 keymap('n', '<Leader>z', ":ZenMode<cr>", opts)
 keymap('n', '<Leader>cp', ":let @+=expand('%')<cr>", opts)
 keymap('n', '<Leader>cP', ":let @+=expand('%:p')<cr>", opts)
--- keymap('n', '<Leader>gb', ":G blame<cr>", opts)
+keymap('v', '<Leader>y', '"+y', opts)
+keymap('n', '<Leader>gb', ":G blame<cr>", opts)
 keymap('n', '<Leader>gg', ":Neogit<cr>", opts)
 -- keymap('n', '<leader>gb', require('agitator').git_blame_toggle)
 -- keymap('n', '<leader>gt', require('agitator').git_time_machine)
