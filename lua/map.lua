@@ -5,6 +5,9 @@ local keymap = vim.keymap.set
 
 opts = {noremap = true, silent = true}
 
+-- Quicker way to save file
+keymap('n', '<Leader>w', ":w<cr>", opts)
+
 -- Diagnostic keymaps
 keymap('n', '<leader>e', vim.diagnostic.open_float)
 keymap('n', '[d', vim.diagnostic.goto_prev)
@@ -47,12 +50,18 @@ keymap('n', ']b', ":bnext<cr>", opts)
 --for some plugins
 keymap('n', '<Leader>bc', ":DeleteHiddenBuffers<cr>", opts)
 keymap('n', '<Leader>=', ":Neoformat<cr>", opts)
-keymap('n', '<Leader>z', ":ZenMode<cr>", opts)
+keymap('n', '<Leader><Leader>', ":ZenMode<cr>", opts)
 keymap('n', '<Leader>cp', ":let @+=expand('%')<cr>", opts)
 keymap('n', '<Leader>cP', ":let @+=expand('%:p')<cr>", opts)
 keymap('v', '<Leader>y', '"+y', opts)
-keymap('n', '<Leader>gb', ":G blame<cr>", opts)
-keymap('n', '<Leader>gg', ":Neogit<cr>", opts)
--- keymap('n', '<leader>gb', require('agitator').git_blame_toggle)
--- keymap('n', '<leader>gt', require('agitator').git_time_machine)
--- keymap('n', '<leader>go', require('agitator').open_file_git_branch)
+-- keymap('n', '<Leader>gb', ":G blame<cr>", opts)
+-- keymap('n', '<Leader>gg', ":Neogit<cr>", opts)
+--
+keymap('n', '<leader>gb', require('agitator').git_blame_toggle, opts)
+keymap('n', '<leader>gt', require('agitator').git_time_machine, opts)
+keymap('n', '<leader>go', require('agitator').open_file_git_branch)
+
+keymap('n', '<Leader>p', '<cmd>NvimTreeToggle<CR>', {})
+keymap('n', '<Leader>P', '<cmd>NvimTreeFindFile<CR>', {})
+
+keymap('n', '<Leader>*', [[:UndotreeToggle<cr>]], opts)

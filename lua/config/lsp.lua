@@ -1,33 +1,32 @@
 local lspconfig = require 'lspconfig'
 local keymap = vim.keymap.set
 
-keymap('n', '<leader>ls', '<cmd>LspStart <cr>', {noremap = true, silent = true})
-keymap('n', '<leader>lS', '<cmd>LspStop <cr>', {noremap = true, silent = true})
+local outerOpts = { noremap=true, silent=true }
+
+keymap('n', '<leader>ls', '<cmd>LspStart <cr>', outerOpts)
+keymap('n', '<leader>lS', '<cmd>LspStop <cr>', outerOpts)
 
 local on_attach = function(_, bufnr)
   local opts = { buffer = bufnr }
   keymap('n', 'gD', vim.lsp.buf.declaration, opts)
   keymap('n', 'gd', vim.lsp.buf.definition, opts)
   keymap('n', 'K', vim.lsp.buf.hover, opts)
+  keymap('n', '<leader>lW', vim.diagnostic.setqflist)
   keymap('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-  keymap('n', '<leader>lr', vim.lsp.buf.rename, opts)
   keymap('n', 'gr', vim.lsp.buf.references, opts)
   keymap('n', '<leader>la', vim.lsp.buf.code_action, opts)
+  keymap('n', '<leader>lr', vim.lsp.buf.rename, opts)
 end
 
--- nvim-cmp supports additional completion capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- LSP settings (for overriding per client)
-local handlers =  {
-  ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = "single"}),
-  ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = "single" }),
-}
+-- local handlers =  {
+--   ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = "single"}),
+--   ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = "single" }),
+-- }
 
 -- Enable the following language servers
-local servers = { 'gopls', 'vuels', 'pylsp', 'cssls', 'sumneko_lua' }
+local servers = { 'gopls', 'vuels', 'pyright', 'cssls', 'sumneko_lua', 'bashls', 'eslint' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     autostart = false,

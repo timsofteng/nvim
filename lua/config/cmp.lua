@@ -44,12 +44,12 @@ cmp.setup {
 
   window = {
     completion = { -- rounded border; thin-style scrollbar
-      border = 'single',
-      winhighlight = 'FloatBorder:Normal,NormalFloat:Normal,CursorLine:Visual,Search:None',
+      -- border = 'single',
+      -- winhighlight = 'FloatBorder:Normal,NormalFloat:Normal,CursorLine:Visual,Search:None',
     },
     documentation = { -- no border; native-style scrollbar
-      border = 'single',
-      winhighlight = 'FloatBorder:Normal,NormalFloat:Normal,CursorLine:Visual,Search:None',
+      -- border = 'single',
+      -- winhighlight = 'FloatBorder:Normal,NormalFloat:Normal,CursorLine:Visual,Search:None',
       -- scrollbar = '║',
       -- other options
     },
@@ -168,3 +168,8 @@ cmp.setup.cmdline(":", {
 
 -- load snippets from runtimepath, eg. friendly-snippets.
 require("luasnip.loaders.from_vscode").lazy_load()
+
+-- nvim-cmp supports additional completion capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true

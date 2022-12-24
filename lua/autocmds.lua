@@ -22,26 +22,26 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 --colorscheme transparent
-local transparentFlag = " guibg=NONE"
+-- local transparentFlag = " guibg=NONE"
 
-local elementsToTransparent = {
-  "Normal",
-  "SignColumn",
-  "GitSignsAdd",
-  "GitSignsChange",
-  "GitSignsDelete",
-  "GitSignsDelete",
-  "DiagnosticSignError",
-  "DiagnosticSignHint",
-  "DiagnosticSignWarn",
-  "DiagnosticSignInfo",
-  "FloatBorder",
-  "NormalFloat",
-}
+-- local elementsToTransparent = {
+--   "Normal",
+--   "SignColumn",
+--   "GitSignsAdd",
+--   "GitSignsChange",
+--   "GitSignsDelete",
+--   "GitSignsDelete",
+--   "DiagnosticSignError",
+--   "DiagnosticSignHint",
+--   "DiagnosticSignWarn",
+--   "DiagnosticSignInfo",
+--   "FloatBorder",
+--   "NormalFloat",
+-- }
 
 
-for _, highlight in ipairs(elementsToTransparent) do
-  vim.api.nvim_create_autocmd({"ColorScheme"}, {
-    command = "hi "..highlight..transparentFlag,
-  })
-end
+-- for _, highlight in ipairs(elementsToTransparent) do
+--   vim.api.nvim_create_autocmd({"ColorScheme"}, {
+--     command = "hi "..highlight..transparentFlag,
+--   })
+-- end

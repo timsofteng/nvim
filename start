@@ -1,0 +1,172 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.009  000.009: --- NVIM STARTING ---
+000.291  000.283: event init
+000.551  000.260: early init
+000.586  000.036: locale set
+000.673  000.087: init first window
+001.546  000.872: inits 1
+001.574  000.028: window checked
+001.579  000.006: parsing arguments
+002.836  000.198  000.198: require('vim.shared')
+003.067  000.089  000.089: require('vim._meta')
+003.072  000.228  000.140: require('vim._editor')
+003.076  000.487  000.061: require('vim._init_packages')
+003.080  001.014: init lua interpreter
+003.163  000.084: expanding arguments
+003.255  000.092: inits 2
+003.857  000.602: init highlight
+003.860  000.003: waiting for UI
+005.881  002.020: done waiting for UI
+005.917  000.036: init screen for UI
+006.190  000.273: init default mappings
+006.224  000.034: init default autocommands
+013.000  000.094  000.094: sourcing /usr/share/nvim/runtime/ftplugin.vim
+013.425  000.060  000.060: sourcing /usr/share/nvim/runtime/indent.vim
+046.355  032.767  032.767: require('impatient')
+047.096  000.010  000.010: require('vim.F')
+047.169  000.246  000.237: require('vim.diagnostic')
+047.186  000.822  000.576: require('basic')
+047.259  000.070  000.070: require('autocmds')
+052.597  005.034  005.034: require('packer.util')
+052.662  005.296  000.263: require('packer')
+052.822  000.154  000.154: require('packer.log')
+053.542  000.123  000.123: require('packer.async')
+053.720  000.069  000.069: require('packer.result')
+053.727  000.178  000.109: require('packer.jobs')
+053.739  000.871  000.570: require('packer.plugin_utils')
+053.897  000.134  000.134: require('packer.snapshot')
+054.191  006.929  000.473: require('plugins')
+054.281  000.015  000.015: require('vim.keymap')
+054.712  000.515  000.500: require('map')
+054.718  041.164  000.062: sourcing /home/tim/.config/nvim/init.lua
+054.735  007.193: sourcing vimrc file(s)
+056.454  001.086  001.086: sourcing /usr/share/nvim/runtime/filetype.lua
+056.562  000.028  000.028: sourcing /usr/share/nvim/runtime/filetype.vim
+057.248  000.204  000.204: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+057.465  000.804  000.600: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+061.500  001.504  001.504: sourcing /usr/share/nvim/runtime/plugin/fzf.vim
+062.037  000.488  000.488: sourcing /usr/share/nvim/runtime/plugin/gzip.vim
+062.101  000.019  000.019: sourcing /usr/share/nvim/runtime/plugin/health.vim
+063.250  000.279  000.279: sourcing /usr/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
+063.408  001.266  000.987: sourcing /usr/share/nvim/runtime/plugin/matchit.vim
+063.707  000.270  000.270: sourcing /usr/share/nvim/runtime/plugin/matchparen.vim
+064.275  000.538  000.538: sourcing /usr/share/nvim/runtime/plugin/netrwPlugin.vim
+064.706  000.013  000.013: sourcing /home/tim/.local/share/nvim/rplugin.vim
+064.718  000.324  000.311: sourcing /usr/share/nvim/runtime/plugin/rplugin.vim
+065.005  000.121  000.121: sourcing /usr/share/nvim/runtime/plugin/shada.vim
+065.335  000.045  000.045: sourcing /usr/share/nvim/runtime/plugin/spellfile.vim
+065.870  000.305  000.305: sourcing /usr/share/nvim/runtime/plugin/tarPlugin.vim
+066.306  000.259  000.259: sourcing /usr/share/nvim/runtime/plugin/tohtml.vim
+066.609  000.040  000.040: sourcing /usr/share/nvim/runtime/plugin/tutor.vim
+067.334  000.505  000.505: sourcing /usr/share/nvim/runtime/plugin/zipPlugin.vim
+069.136  000.074  000.074: require('nvim-autopairs._log')
+069.251  000.109  000.109: require('nvim-autopairs.utils')
+069.530  000.095  000.095: require('nvim-autopairs.conds')
+069.542  000.191  000.096: require('nvim-autopairs.rule')
+069.547  000.292  000.102: require('nvim-autopairs.rules.basic')
+069.561  000.730  000.255: require('nvim-autopairs')
+070.812  000.094  000.094: require('vim.treesitter.language')
+070.841  000.253  000.159: require('vim.treesitter.query')
+070.967  000.108  000.108: require('vim.treesitter.languagetree')
+071.014  000.545  000.184: require('vim.treesitter')
+071.355  001.226  000.681: require('nvim-treesitter.parsers')
+071.481  000.120  000.120: require('nvim-treesitter.utils')
+071.526  001.512  000.165: require('nvim-treesitter.ts_utils')
+071.534  001.599  000.087: require('nvim-autopairs.ts-conds')
+071.539  001.725  000.126: require('nvim-autopairs.rules.ts_basic')
+071.693  000.149  000.149: require('vim.treesitter.highlighter')
+072.167  003.435  000.831: require('config.autopairs')
+072.641  000.090  000.090: require('nvim-treesitter.tsrange')
+072.724  000.076  000.076: require('nvim-treesitter.caching')
+072.746  000.320  000.153: require('nvim-treesitter.query')
+072.785  000.543  000.223: require('nvim-treesitter.configs')
+072.880  000.704  000.161: require('config.treesitter')
+073.852  000.167  000.167: require('vim.lsp.log')
+074.428  000.570  000.570: require('vim.lsp.protocol')
+074.882  000.191  000.191: require('vim.lsp._snippet')
+074.969  000.081  000.081: require('vim.highlight')
+074.998  000.565  000.293: require('vim.lsp.util')
+075.035  001.502  000.200: require('vim.lsp.handlers')
+075.286  000.247  000.247: require('vim.lsp.rpc')
+075.437  000.145  000.145: require('vim.lsp.sync')
+075.748  000.278  000.278: require('vim.lsp.buf')
+075.861  000.108  000.108: require('vim.lsp.diagnostic')
+075.986  000.120  000.120: require('vim.lsp.codelens')
+076.068  002.825  000.424: require('vim.lsp')
+076.223  003.102  000.277: require('lspconfig.util')
+076.229  003.209  000.108: require('lspconfig.configs')
+076.236  003.292  000.082: require('lspconfig')
+076.420  000.133  000.133: require('lspconfig.server_configurations.gopls')
+076.741  000.122  000.122: require('lspconfig.server_configurations.vuels')
+076.927  000.099  000.099: require('lspconfig.server_configurations.pyright')
+077.069  000.078  000.078: require('lspconfig.server_configurations.cssls')
+077.214  000.088  000.088: require('lspconfig.server_configurations.sumneko_lua')
+077.358  000.081  000.081: require('lspconfig.server_configurations.bashls')
+077.971  000.099  000.099: require('lspconfig.server_configurations.tsserver')
+078.005  000.585  000.486: require('typescript')
+078.070  005.185  000.707: require('config.lsp')
+078.422  000.099  000.099: require('lualine_require')
+079.008  000.830  000.731: require('lualine')
+083.771  005.693  004.864: require('config.lualine')
+083.848  000.062  000.062: require('config.fidget')
+084.276  000.060  000.060: require('which-key.util')
+084.281  000.127  000.067: require('which-key.tree')
+084.353  000.069  000.069: require('which-key.config')
+084.362  000.345  000.149: require('which-key.keys')
+084.369  000.444  000.099: require('which-key')
+084.414  000.559  000.115: require('config.which-key')
+084.503  000.048  000.048: require('gruvbox')
+090.461  000.454  000.454: require('gruvbox.groups')
+090.526  000.058  000.058: require('gruvbox.palette')
+096.254  006.357  005.845: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/gruvbox.nvim/colors/gruvbox.lua
+098.932  014.513  008.108: require('config.colorscheme')
+099.448  031.685  001.534: sourcing /home/tim/.config/nvim/plugin/packer_compiled.lua
+100.532  000.101  000.101: sourcing /usr/share/nvim/runtime/plugin/man.lua
+100.568  006.444: loading rtp plugins
+102.813  000.102  000.102: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/neoformat/plugin/neoformat.vim
+103.546  000.130  000.130: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/nvim-lspconfig/plugin/lspconfig.lua
+104.186  000.056  000.056: require('nvim-treesitter.info')
+104.262  000.071  000.071: require('nvim-treesitter.shell_command_selectors')
+104.290  000.275  000.148: require('nvim-treesitter.install')
+104.344  000.051  000.051: require('nvim-treesitter.statusline')
+104.417  000.070  000.070: require('nvim-treesitter.query_predicates')
+104.421  000.460  000.064: require('nvim-treesitter')
+105.169  000.339  000.339: require('nvim-treesitter.highlight')
+105.367  001.464  000.665: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/nvim-treesitter/plugin/nvim-treesitter.lua
+105.782  000.068  000.068: require('ts_context_commentstring')
+105.825  000.146  000.078: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring/plugin/ts_context_commentstring.vim
+106.369  000.072  000.072: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/plenary.nvim/plugin/plenary.vim
+106.952  000.039  000.039: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/twilight.nvim/plugin/twilight.vim
+108.917  001.384  001.384: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/vim-abolish/plugin/abolish.vim
+109.489  000.196  000.196: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/vim-commentary/plugin/commentary.vim
+110.130  000.153  000.153: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/vim-dadbod/plugin/dadbod.vim
+110.850  000.351  000.351: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/vim-dadbod-ui/plugin/db_ui.vim
+111.283  000.028  000.028: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/vim-delete-hidden-buffers/plugin/delete-hidden-buffers.vim
+115.987  004.341  004.341: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/vim-dispatch/plugin/dispatch.vim
+116.603  000.148  000.148: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/vim-obsession/plugin/obsession.vim
+117.830  000.656  000.656: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/vim-sleuth/plugin/sleuth.vim
+119.094  000.887  000.887: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/vim-surround/plugin/surround.vim
+119.476  000.018  000.018: sourcing /home/tim/.local/share/nvim/site/pack/packer/start/which-key.nvim/plugin/which-key.vim
+119.796  009.113: loading packages
+119.826  000.030: loading after plugins
+119.841  000.014: inits 3
+123.458  003.618: reading ShaDa
+123.633  000.174: opening buffers
+123.878  000.246: BufEnter autocommands
+123.882  000.004: editing files in windows
+124.102  000.075  000.075: require('which-key.plugins')
+124.162  000.055  000.055: require('which-key.plugins.marks')
+124.340  000.104  000.104: require('which-key.plugins.presets')
+124.413  000.070  000.070: require('which-key.plugins.presets.misc')
+124.467  000.043  000.043: require('which-key.plugins.registers')
+124.573  000.040  000.040: require('which-key.colors')
+132.794  008.526: VimEnter autocommands
+132.801  000.007: UIEnter autocommands
+132.827  000.026: before starting main loop
+136.899  004.072: first screen update
+136.904  000.005: --- NVIM STARTED ---

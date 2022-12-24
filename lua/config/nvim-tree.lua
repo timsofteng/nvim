@@ -1,8 +1,6 @@
 local nvim_tree = require'nvim-tree'
 local keymap = vim.keymap.set
 
-keymap('n', '<Leader>p', [[:NvimTreeToggle <CR>]], {})
-keymap('n', '<Leader>P', [[:NvimTreeFindFile<CR>]], {})
 
 local icons = {
   show = {

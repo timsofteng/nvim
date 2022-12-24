@@ -1,7 +1,7 @@
 require("which-key").setup {
   window = {
-    border = "single", -- none, single, double, shadow
-    margin = { 1, 2, 1, 0 }, -- extra window margin [top, right, bottom, left]
+    -- border = "single", -- none, single, double, shadow
+    margin = { 1, 2, 2, 2 }, -- extra window margin [top, right, bottom, left]
   },
 }
 local wk = require("which-key")

@@ -43,5 +43,12 @@ telescope.setup {
       hide_on_startup = true,
     },
   },
+  pickers = {
+    live_grep = {
+      preview = {
+        hide_on_startup = false,
+      },
+    },
+  },
 }
 
