@@ -173,7 +173,7 @@ return require('packer').startup(function(use)
     cmd = {'DiffviewOpen', 'DiffviewFileHistory'},
     config = function() require'config.diffview' end
   }
-  use 'emmanueltouzery/agitator.nvim'
+  -- use 'emmanueltouzery/agitator.nvim'
   -----------------------------------------------------
 
 
