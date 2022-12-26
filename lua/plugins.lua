@@ -1,47 +1,29 @@
---Auto install packer.nvim if not exists
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
-end
-
-local packer_bootstrap = ensure_packer()
-
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
-
-return require('packer').startup(function(use)
-
+return {
   -- Packer can manage itself as an optional plugin
-  use {'wbthomason/packer.nvim'}
-  use  {'nvim-lua/popup.nvim'}
-  use {'nvim-lua/plenary.nvim'}
+   {'nvim-lua/popup.nvim'},
+   {'nvim-lua/plenary.nvim'},
 
-  -- use {'ggandor/leap.nvim'}
+  --  {'ggandor/leap.nvim'}
   -- require('leap').set_default_keymaps()
 
-  -- use {'phaazon/hop.nvim'}
+  --  {'phaazon/hop.nvim'}
   -- require'hop'.setup()
 
   --- optimization ---------------------------
-  use 'lewis6991/impatient.nvim'
+   -- 'lewis6991/impatient.nvim'
 
   --- Project and Sessions ---------------------------
-  use { 'tpope/vim-obsession' }
+   { 'tpope/vim-obsession',
+	lazy = false,
+   },
 
   --history tree
-  use { 
-    'mbbill/undotree',
-    opt = true,
-    cmd = {"UndotreeToggle"},
-    config = function() require'config.undotree' end
-  }
-  -- use {
+   -- { 
+   --  'mbbill/undotree',
+   --  cmd = {"UndotreeToggle"},
+   --  config = function() require'config.undotree' end
+  -- },
+  --  {
   --   'kevinhwang91/nvim-bqf',
   --   config = function() require'config.bqf' end
   -- }
@@ -50,88 +32,110 @@ return require('packer').startup(function(use)
 
 
   --- File Tree ---------------------------
-  use {'kyazdani42/nvim-tree.lua',
-    opt = true,
+   {'kyazdani42/nvim-tree.lua',
     cmd = {"NvimTreeToggle", "NvimTreeFindFile"},
     config = function() require'config.nvim-tree' end
-  }
+  },
+
+   -- {'nvim-neo-tree/neo-tree.nvim',
+   --      branch = "v2.x",
+   --    cmd = {"Neotree"},
+   --    dependencies = {
+	-- "MunifTanjim/nui.nvim",
+   --  },
+  --},
   -----------------------------------------------------
 
 
 
   --- Buffers ---------------------------
-  use { 'arithran/vim-delete-hidden-buffers', }
-  use { 
+  { 'arithran/vim-delete-hidden-buffers', lazy = false },
+  { 
     "folke/zen-mode.nvim",
-    opt = true,
     cmd = {"ZenMode"},
-    config = function() require'config.zenmode' end
-  }
-  use { 
+    config = function() require'config.zen' end
+  },
+  { 
     'folke/which-key.nvim',
+    lazy = false,
     config = function() require'config.which-key' end
-  }
-  use 'folke/twilight.nvim'
+  },
+  {
+    'folke/twilight.nvim',
+  },
   -----------------------------------------------------
 
 
 
   --- LSP and Completion ---------------------------
-  use { 
+   { 
     'neovim/nvim-lspconfig',
     -- opt = true,
-    -- cmd = {"LspStart"},
+    cmd = {"LspStart"},
     config = function() require'config.lsp' end
-  }
+  },
 
-  use 'jose-elias-alvarez/typescript.nvim'
+   'jose-elias-alvarez/typescript.nvim',
 
-  use { 
+   { 
     'hrsh7th/nvim-cmp',
-    -- opt = true,
     -- event = { "InsertEnter", "CmdlineEnter" },
-    requires = {
+    keys = {
+      {"<c-n>", mode = "i"},
+      {"<c-p>", mode = "i"},
+      {"<c-i>", mode = "c"},
+    },
+    --lazy = false,
+    dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-path",
       'andersevenrud/cmp-tmux',
-      'saadparwaiz1/cmp_luasnip',
-      'L3MON4D3/LuaSnip',
-      'rafamadriz/friendly-snippets',
     },
     config = function() require'config.cmp' end
-  }
+  },
+  { 
+    "L3MON4D3/LuaSnip",
+    keys = {{"<c-l>", mode = "i"}},
+    config = function() require'config.luasnip' end,
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+      'saadparwaiz1/cmp_luasnip',
+    },
+  },
 
-  use { 
+  { 
     'j-hui/fidget.nvim',
+    cmd = {"LspStart"},
     config = function() require'config.fidget' end
-  }
-  -- use { 'mattn/emmet-vim' }
+  },
+  --  { 'mattn/emmet-vim' }
   -----------------------------------------------------
 
 
 
   --- Linters ---------------------------
-  use { 
+  { 
     'sbdchd/neoformat',
-  }
- use { 'tpope/vim-sleuth' }
- use { 'tpope/vim-dispatch' }
- -- use { 'mfussenegger/nvim-lint',
+    cmd = {'Neoformat'},
+  },
+  { 'tpope/vim-sleuth', lazy = false },
+  { 'tpope/vim-dispatch' },
+ --  { 'mfussenegger/nvim-lint',
  --    config = function() require'config.nvim-lint' end
  --  }
-  -- use { 'jose-elias-alvarez/null-ls.nvim',
+  --  { 'jose-elias-alvarez/null-ls.nvim',
   --   config = function() require'config.null-ls' end
   -- }
 
-  -- use {
+  --  {
   --   "folke/trouble.nvim",
   --   requires = "kyazdani42/nvim-web-devicons",
   --   config = function()
   --     require("trouble").setup {
   --       -- your configuration comes here
-  --       -- or leave it empty to use the default settings
+  --       -- or leave it empty to  the default settings
   --       -- refer to the configuration section below
   --     }
   --   end
@@ -141,88 +145,115 @@ return require('packer').startup(function(use)
 
 
   --- Search And Fuzzy ---------------------------
-  use {
+  {
     'nvim-telescope/telescope.nvim',
-    opt = true,
     keys = {"n", '<Leader>f'},
     cmd = {'Telescope'},
     config = function() require'config.telescope' end
-  }
+  },
 
-  -- use { 
+  --  { 
   --   'windwp/nvim-spectre',
   --   config = function() require'config.spectre' end
   -- }
-  -- use { 'dyng/ctrlsf.vim' }
+  --  { 'dyng/ctrlsf.vim' }
   -----------------------------------------------------
 
 
 
   --- Git ---------------------------
-  use {
+  {
     'lewis6991/gitsigns.nvim',
-    keys = {"n", '<Leader>g'},
+    keys = {"n", '<Leader>gs'},
     cmd = {'Gitsigns'},
     config = function()
       require'config.gitsigns'
     end
-  }
-  use { 
+  },
+   { 
     'sindrets/diffview.nvim',
-    opt = true,
     cmd = {'DiffviewOpen', 'DiffviewFileHistory'},
     config = function() require'config.diffview' end
-  }
-  -- use 'emmanueltouzery/agitator.nvim'
+  },
+  'emmanueltouzery/agitator.nvim',
   -----------------------------------------------------
 
 
 
   --- Appearence ---------------------------
   --themes
-  use { 
+  { 
     "ellisonleao/gruvbox.nvim",
+    lazy = false,
     config = function() require'config.colorscheme' end
-  }
-  use { 
+  },
+  { 
     'nvim-treesitter/nvim-treesitter',
-    config = function() require'config.treesitter' end
-  }
-  use { 
-    'windwp/nvim-ts-autotag',
-  }
-  use { 
+    lazy = false,
+    event = "BufReadPost",
+    config = function() require'config.treesitter' end,
+    dependencies = {
+      'windwp/nvim-ts-autotag',
+      'JoosepAlviste/nvim-ts-context-commentstring',
+    },
+  },
+  { 
     'nvim-lualine/lualine.nvim', 
+    lazy = false,
     config = function() require'config.lualine' end
-  } 
+  },
+  -- {
+  --   'nanozuki/tabby.nvim',
+  --   lazy = false,
+  --   config = function() require'config.tabby' end
+  -- },
+
+  -- { 
+  --   'uga-rosa/ccc.nvim', 
+  --   lazy = false,
+  -- },
   -----------------------------------------------------
 
 
   --- Floating Code ---------------------------
   --commenting tool
-  use { 'tpope/vim-abolish' }
-  -- use {
+  { 
+    'tpope/vim-abolish',
+    event = "BufReadPost",
+  },
+  --  {
   --   'numToStr/Comment.nvim',
   --   config = function()
   --       require('Comment').setup()
   --   end
 -- }
-  use { 'tpope/vim-commentary' }
-  use {'JoosepAlviste/nvim-ts-context-commentstring'}
+   { 
+     'tpope/vim-commentary',
+      keys = {{"gc", mode = "v"}, "gcc"}
+    },
+
   --surrounder
-  use { 'tpope/vim-surround' }
-  use { 
+  { 
+    -- 'tpope/vim-surround', 
+    'kylechui/nvim-surround', 
+    event = { "InsertEnter" },
+    config = function()
+      require("nvim-surround").setup()
+      end
+   },
+   { 
     'windwp/nvim-autopairs',
-    config = function() require'config.autopairs' end
-  }
+     event = { "InsertEnter" },
+     config = function() require'config.autopairs' end
+  },
   --repeat by "." for custom plugins
-  use { 'tpope/vim-repeat' }
+   { 'tpope/vim-repeat', lazy = false },
   -----------------------------------------------------
 
 
   ---- Writers work -----------------------------------
-  -- use {'lervag/vimtex'}
-  -- use {
+  --  {'lervag/vimtex'}
+  --  {
   --   "nvim-neorg/neorg",
   --   config = function() require'config.neorg' end
   -- }
@@ -230,15 +261,12 @@ return require('packer').startup(function(use)
 
 
   ---- Integrations -----------------------------------
-  -- use { 'NTBBloodbath/rest.nvim' }
-  use 'tpope/vim-dadbod'
-  use 'kristijanhusak/vim-dadbod-ui'
-  use { "williamboman/mason.nvim",
-    opt = true,
+  --  { 'NTBBloodbath/rest.nvim' }
+   'tpope/vim-dadbod',
+   'kristijanhusak/vim-dadbod-ui',
+   { "williamboman/mason.nvim",
     cmd = {"Mason"},
     config = function() require("mason").setup() end
   }
 
-end
-)
-
+}

@@ -1,5 +1,5 @@
 local cmp = require'cmp'
-local luasnip = require 'luasnip'
+--local luasnip = require 'luasnip'
 local keymap = vim.api.nvim_set_keymap
 
 local confirm = function(fallback) 
@@ -166,8 +166,6 @@ cmp.setup.cmdline(":", {
   },
 })
 
--- load snippets from runtimepath, eg. friendly-snippets.
-require("luasnip.loaders.from_vscode").lazy_load()
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()

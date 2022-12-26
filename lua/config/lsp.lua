@@ -3,8 +3,6 @@ local keymap = vim.keymap.set
 
 local outerOpts = { noremap=true, silent=true }
 
-keymap('n', '<leader>ls', '<cmd>LspStart <cr>', outerOpts)
-keymap('n', '<leader>lS', '<cmd>LspStop <cr>', outerOpts)
 
 local on_attach = function(_, bufnr)
   local opts = { buffer = bufnr }

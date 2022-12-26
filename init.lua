@@ -6,8 +6,9 @@ require'basic'
 -- autocmds
 require'autocmds'
 
---plugin manager init
-require'plugins'
-
 -- map
 require'map'
+
+--plugin manager init
+require'config.lazy'
+
