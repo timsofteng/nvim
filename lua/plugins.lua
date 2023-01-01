@@ -70,12 +70,15 @@ return {
   --- LSP and Completion ---------------------------
    { 
     'neovim/nvim-lspconfig',
-    -- opt = true,
-    cmd = {"LspStart"},
+    lazy = false,
+    -- cmd = {"LspStart"},
     config = function() require'config.lsp' end
   },
 
-   'jose-elias-alvarez/typescript.nvim',
+  { 
+    'jose-elias-alvarez/typescript.nvim',
+    lazy = false,
+  },
 
    { 
     'hrsh7th/nvim-cmp',
@@ -105,11 +108,11 @@ return {
     },
   },
 
-  { 
-    'j-hui/fidget.nvim',
-    cmd = {"LspStart"},
-    config = function() require'config.fidget' end
-  },
+  -- { 
+  --   'j-hui/fidget.nvim',
+  --   cmd = {"LspStart"},
+  --   config = function() require'config.fidget' end
+  -- },
   --  { 'mattn/emmet-vim' }
   -----------------------------------------------------
 
@@ -234,12 +237,12 @@ return {
 
   --surrounder
   { 
-    -- 'tpope/vim-surround', 
-    'kylechui/nvim-surround', 
+    'tpope/vim-surround', 
+    -- 'kylechui/nvim-surround', 
     event = { "InsertEnter" },
-    config = function()
-      require("nvim-surround").setup()
-      end
+    -- config = function()
+    --   require("nvim-surround").setup()
+    --   end
    },
    { 
     'windwp/nvim-autopairs',
