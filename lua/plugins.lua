@@ -70,14 +70,13 @@ return {
   --- LSP and Completion ---------------------------
    { 
     'neovim/nvim-lspconfig',
-    lazy = false,
-    -- cmd = {"LspStart"},
+    -- lazy = false,
+    cmd = {"LspStart"},
     config = function() require'config.lsp' end
   },
 
   { 
     'jose-elias-alvarez/typescript.nvim',
-    lazy = false,
   },
 
    { 
