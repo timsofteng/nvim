@@ -57,7 +57,7 @@ keymap('n', '<Leader><Leader>', ":ZenMode<cr>", opts)
 keymap('n', '<Leader>cp', ":let @+=expand('%')<cr>", opts)
 keymap('n', '<Leader>cP', ":let @+=expand('%:p')<cr>", opts)
 keymap('v', '<Leader>y', '"+y', opts)
--- keymap('n', '<Leader>gb', ":G blame<cr>", opts)
+keymap('n', '<Leader>gb', ":G blame<cr>", opts)
 -- keymap('n', '<Leader>gg', ":Neogit<cr>", opts)
 --
 --keymap('n', '<leader>gb', require('agitator').git_blame_toggle, opts)

@@ -18,11 +18,11 @@ return {
    },
 
   --history tree
-   -- { 
-   --  'mbbill/undotree',
-   --  cmd = {"UndotreeToggle"},
-   --  config = function() require'config.undotree' end
-  -- },
+   { 
+    'mbbill/undotree',
+    cmd = {"UndotreeToggle"},
+    config = function() require'config.undotree' end
+  },
   --  {
   --   'kevinhwang91/nvim-bqf',
   --   config = function() require'config.bqf' end
@@ -49,7 +49,10 @@ return {
 
 
   --- Buffers ---------------------------
-  { 'arithran/vim-delete-hidden-buffers', lazy = false },
+  { 
+    'arithran/vim-delete-hidden-buffers', 
+    lazy = false 
+  },
   { 
     "folke/zen-mode.nvim",
     cmd = {"ZenMode"},
@@ -177,7 +180,11 @@ return {
     cmd = {'DiffviewOpen', 'DiffviewFileHistory'},
     config = function() require'config.diffview' end
   },
-  'emmanueltouzery/agitator.nvim',
+  -- 'emmanueltouzery/agitator.nvim',
+
+   { 'tpope/vim-fugitive',
+    keys = {"n", '<Leader>g'},
+   },
   -----------------------------------------------------
 
 
@@ -202,7 +209,7 @@ return {
   { 
     'nvim-lualine/lualine.nvim', 
     lazy = false,
-    config = function() require'config.lualine' end
+    -- config = function() require'config.lualine' end
   },
   -- {
   --   'nanozuki/tabby.nvim',
@@ -233,6 +240,12 @@ return {
      'tpope/vim-commentary',
       keys = {{"gc", mode = "v"}, "gcc"}
     },
+
+   { 
+    "danymat/neogen", 
+    dependencies = "nvim-treesitter/nvim-treesitter", 
+    config = true,
+  },
 
   --surrounder
   { 
