@@ -1,5 +1,5 @@
 local cmp = require'cmp'
---local luasnip = require 'luasnip'
+local luasnip = require 'luasnip'
 local keymap = vim.api.nvim_set_keymap
 
 local confirm = function(fallback) 
@@ -13,7 +13,7 @@ local confirm = function(fallback)
   end
 end
 
-local snippetsKey = function() 
+local snippetTrigger = function() 
   cmp.complete({
     config = {
       sources = {
@@ -30,6 +30,41 @@ local allBuffersSource  = function()
   end
   return vim.tbl_keys(bufs)
 end
+
+local bufTrigger = function()
+  if cmp.visible() then
+    cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
+  else
+    cmp.complete({
+      config = {
+        sources = {
+          { 
+            name = 'buffer',
+            option = {
+              get_bufnrs = allBuffersSource,
+            },
+          { name = "tmux" }
+          }, 
+        }
+      }
+    })
+  end
+end
+
+local lspTrigger = function()
+  if cmp.visible() then
+    cmp.select_prev_item({behavior = cmp.SelectBehavior.Select})
+  else
+    cmp.complete({
+      config = {
+        sources = {
+          { name = "nvim_lsp" }
+        }
+      }
+    })
+  end
+end
+
 
 cmp.setup {
   completion = {
@@ -56,43 +91,14 @@ cmp.setup {
   },
 
   mapping = cmp.mapping.preset.insert({
-    ['<C-n>'] = function()
-      if cmp.visible() then
-        cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
-      else
-        cmp.complete({
-          config = {
-            sources = {
-              { 
-                name = 'buffer',
-                option = {
-                  get_bufnrs = allBuffersSource,
-                }
-              }, 
-            }
-          }
-        })
-      end
-    end,
+    ['<C-n>'] = bufTrigger,
+    ['<C-p>'] = lspTrigger,
+    ['<C-l>'] = snippetTrigger,
 
-    ['<C-p>'] = function()
-      if cmp.visible() then
-        cmp.select_prev_item({behavior = cmp.SelectBehavior.Select})
-      else
-        cmp.complete({
-          config = {
-            sources = {
-              { name = "nvim_lsp" }
-            }
-          }
-        })
-      end
-    end,
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-x><C-o>'] = cmp.mapping.complete(),
     ['<C-c>'] = cmp.mapping.close(),
-    ['<C-l>'] = snippetsKey,
     ['<C-e>'] = confirm,
     ['<CR>'] = confirm,
 
@@ -171,3 +177,9 @@ cmp.setup.cmdline(":", {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+return { 
+  bufTrigger = bufTrigger,
+  lspTrigger = lspTrigger,
+  snippetTrigger = snippetTrigger,
+}

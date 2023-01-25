@@ -9,7 +9,10 @@ parser_configs.http = {
 }
 
 require'nvim-treesitter.configs'.setup {
-  -- ensure_installed = "all",     -- one of "all", "language", or a list of languages
+  ensure_installed = { 
+    "c", "lua", "vim", "help", "typescript", "tsx", "go" 
+  },
+
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { },  -- list of language that will be disabled

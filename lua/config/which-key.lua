@@ -19,12 +19,16 @@ wk.register({
     name = "Git",
   },
 
-  r = {
-    name = "Spectre",
+  q = {
+    name = "Quickfix",
   },
 
-  q = {
-    name = "Quickfix List",
+  c = {
+    name = "Copy",
+  },
+
+  l = {
+    name = "Lsp",
   },
 
 }, { prefix = "<leader>" })

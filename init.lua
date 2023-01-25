@@ -1,5 +1,3 @@
-pcall(require, 'impatient')
-
 -- basic options
 require'basic'
 
@@ -7,7 +5,8 @@ require'basic'
 require'autocmds'
 
 -- map
-require'map'
+require'keymap.native'
+require'keymap.plugins'
 
 --plugin manager init
 require'config.lazy'
