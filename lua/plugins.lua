@@ -146,6 +146,18 @@ return {
 	--  { 'mattn/emmet-vim' }
 	-----------------------------------------------------
 
+	--- Debug ---------------------------
+	{
+		"mfussenegger/nvim-dap",
+		lazy = false,
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+		},
+		config = function()
+			require("config.dap")
+		end,
+	},
+
 	--- Linters ---------------------------
 	{
 		"sbdchd/neoformat",
@@ -216,6 +228,7 @@ return {
 	-----------------------------------------------------
 
 	--- Appearence ---------------------------
+	{"nvim-tree/nvim-web-devicons", lazy = false},
 	--themes
 	{
 		"ellisonleao/gruvbox.nvim",

@@ -6,7 +6,8 @@ local keymap = vim.keymap.set
 opts = {noremap = true, silent = true}
 
 -- Quicker way to save file
-keymap('n', '<Leader>w', ":w<cr>", { desc = "Save buffer", unpack(opts) })
+keymap('n', '<Leader>ww', ":w<cr>", { desc = "Save buffer", unpack(opts) })
+keymap('n', '<Leader>wa', ":wa<cr>", { desc = "Save [a]ll buffers", unpack(opts) })
 
 keymap('n', '<Leader>#', ":set number!<cr>", { desc = "Numbers toggle", unpack(opts) })
 
