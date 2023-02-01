@@ -228,7 +228,7 @@ return {
 	-----------------------------------------------------
 
 	--- Appearence ---------------------------
-	{"nvim-tree/nvim-web-devicons", lazy = false},
+	{ "nvim-tree/nvim-web-devicons", lazy = false },
 	--themes
 	{
 		"ellisonleao/gruvbox.nvim",
@@ -332,4 +332,5 @@ return {
 			require("mason").setup()
 		end,
 	},
+	{ "https://git.sr.ht/~soywod/himalaya-vim", lazy = false },
 }
