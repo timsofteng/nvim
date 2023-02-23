@@ -14,10 +14,20 @@ return {
 			require("config.undotree")
 		end,
 	},
-	--  {
-	--   'kevinhwang91/nvim-bqf',
-	--   config = function() require'config.bqf' end
-	-- }
+	{
+		"stevearc/oil.nvim",
+		cmd = { "Oil" },
+		config = function()
+			require("config.oil")
+		end,
+	},
+	{
+		"kevinhwang91/nvim-bqf",
+		lazy = false,
+		config = function()
+			require("config.bqf")
+		end,
+	},
 	-----------------------------------------------------
 
 	--- Navigation ---------------------------
@@ -29,13 +39,15 @@ return {
 		end,
 	},
 
-	-- {'nvim-neo-tree/neo-tree.nvim',
-	--      branch = "v2.x",
-	--    cmd = {"Neotree"},
-	--    dependencies = {
-	-- "MunifTanjim/nui.nvim",
-	--  },
-	--},
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
+		cmd = { "Neotree" },
+		dependencies = {
+			"s1n7ax/nvim-window-picker",
+			"MunifTanjim/nui.nvim",
+		},
+	},
 	-- {
 	--   'ggandor/leap.nvim',
 	--    config = function() require('leap').add_default_mappings() end,
@@ -75,7 +87,6 @@ return {
 	--- LSP and Completion ---------------------------
 	{
 		"neovim/nvim-lspconfig",
-		-- lazy = false,
 		cmd = { "LspStart" },
 		config = function()
 			require("config.lsp")
@@ -138,18 +149,20 @@ return {
 		},
 	},
 
-	-- {
-	--   'j-hui/fidget.nvim',
-	--   cmd = {"LspStart"},
-	--   config = function() require'config.fidget' end
-	-- },
+	{
+		"j-hui/fidget.nvim",
+		cmd = { "LspStart" },
+		config = function()
+			require("config.fidget")
+		end,
+	},
 	--  { 'mattn/emmet-vim' }
 	-----------------------------------------------------
 
 	--- Debug ---------------------------
 	{
 		"mfussenegger/nvim-dap",
-		lazy = false,
+		-- lazy = false,
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
 		},
@@ -168,9 +181,13 @@ return {
 		lazy = false,
 	},
 	{ "tpope/vim-dispatch" },
-	--  { 'mfussenegger/nvim-lint',
-	--    config = function() require'config.nvim-lint' end
-	--  }
+	{
+		"mfussenegger/nvim-lint",
+		lazy = false,
+		config = function()
+			require("config.nvim-lint")
+		end,
+	},
 	--  { 'jose-elias-alvarez/null-ls.nvim',
 	--   config = function() require'config.null-ls' end
 	-- }
@@ -240,7 +257,6 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
-		-- event = "BufReadPost",
 		config = function()
 			require("config.treesitter")
 		end,
@@ -252,7 +268,9 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		lazy = false,
-		-- config = function() require'config.lualine' end
+		config = function()
+			require("config.lualine")
+		end,
 	},
 	-- {
 	--   'nanozuki/tabby.nvim',
@@ -309,7 +327,7 @@ return {
 	--repeat by "." for custom plugins
 	{
 		"tpope/vim-repeat",
-		-- lazy = false
+		lazy = false,
 	},
 	-----------------------------------------------------
 
@@ -332,5 +350,5 @@ return {
 			require("mason").setup()
 		end,
 	},
-	{ "https://git.sr.ht/~soywod/himalaya-vim", lazy = false },
+	-- { "https://git.sr.ht/~soywod/himalaya-vim", lazy = false },
 }

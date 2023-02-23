@@ -29,5 +29,5 @@ require("lazy").setup("plugins", {
       },
     },
   },
-  debug = true,
+  -- debug = true,
 })

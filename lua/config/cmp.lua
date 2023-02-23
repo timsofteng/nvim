@@ -92,8 +92,8 @@ cmp.setup {
 
   mapping = cmp.mapping.preset.insert({
     ['<C-n>'] = bufTrigger,
-    ['<C-p>'] = lspTrigger,
-    ['<C-l>'] = snippetTrigger,
+    ['<C-l>'] = lspTrigger,
+    ['<C-p>'] = snippetTrigger,
 
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),

@@ -24,7 +24,7 @@ end
 -- }
 
 -- Enable the following language servers
-local servers = { 'gopls', 'vuels', 'pyright', 'cssls', 'sumneko_lua', 'bashls', 'eslint' }
+local servers = { 'gopls', 'vuels', 'pyright', 'cssls', 'sumneko_lua', 'bashls', 'eslint', 'marksman' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     autostart = false,
