@@ -15,13 +15,6 @@ return {
 		end,
 	},
 	{
-		"stevearc/oil.nvim",
-		cmd = { "Oil" },
-		config = function()
-			require("config.oil")
-		end,
-	},
-	{
 		"kevinhwang91/nvim-bqf",
 		lazy = false,
 		config = function()
