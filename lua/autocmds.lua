@@ -1,6 +1,8 @@
 --compilers by filetyp
 local compilers = {
   go="compiler go",
+  -- typescript="tsc",
+  -- typescriptreact="tsc",
 }
 
 for fileType, command in pairs(compilers) do

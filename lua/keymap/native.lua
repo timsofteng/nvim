@@ -14,7 +14,8 @@ keymap('n', '<Leader>#', ":set number!<cr>", { desc = "Numbers toggle", unpack(o
 -- Diagnostic keymaps
 keymap('n', '<leader>e', vim.diagnostic.open_float)
 keymap('n', '[d', vim.diagnostic.goto_prev)
-keymap('n', ']d', vim.diagnostic.goto_next)
+keymap('n', '<C-p>', vim.diagnostic.goto_prev)
+keymap('n', '<C-n>', vim.diagnostic.goto_next)
 keymap('n', '<leader>q', vim.diagnostic.setloclist)
 
 --Buffers

@@ -258,6 +258,11 @@ return {
 			require("config.agitator")
 		end,
 	},
+	{
+		"TimUntersberger/neogit",
+		-- cmd = { "Neogit" },
+		keys = { "n", "<Leader>gg"}
+	},
 
 	-- { "tpope/vim-fugitive", keys = { "n", "<Leader>g" } },
 	-----------------------------------------------------

@@ -10,14 +10,14 @@ local opts = {noremap = true, silent = true}
 keymap('n', '<leader>ff', '<cmd>Telescope find_files '..findFileCmd..' <cr>', opts)
 keymap('n', '<leader>fc', '<cmd>Telescope live_grep<cr>', opts)
 keymap('n', '<leader>fg', '<cmd>Telescope git_files<cr>', opts)
-keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
+keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>',opts)
 keymap('n', '<leader>fh', '<cmd>Telescope command_history<cr>', opts)
 keymap('n', '<leader>fm', '<cmd>Telescope marks<cr>', opts)
 keymap('n', '<leader>f.', '<cmd>Telescope resume<cr>', opts)
 keymap('n', '<leader>fq', '<cmd>Telescope quickfixhistory<cr>', opts)
 keymap('n', '<leader>f?', '<cmd>Telescope help_tags<cr>', opts)
 
-telescope.setup { 
+telescope.setup {
   defaults ={
     layout_strategy = 'bottom_pane',
     sorting_strategy = 'ascending',
@@ -45,6 +45,9 @@ telescope.setup {
     },
   },
   pickers = {
+		buffers = {
+			sort_lastused = true
+		},
     live_grep = {
       preview = {
         hide_on_startup = false,
