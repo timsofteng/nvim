@@ -25,6 +25,13 @@ return {
 
 	--- Navigation ---------------------------
 	{
+		"stevearc/oil.nvim",
+		cmd = { "Oil" },
+		config = function()
+			require("config.oil")
+		end,
+	},
+	{
 		"kyazdani42/nvim-tree.lua",
 		cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
 		config = function()
