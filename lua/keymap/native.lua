@@ -11,9 +11,6 @@ keymap('n', '<Leader>wa', ":wa<cr>", { desc = "Save [a]ll buffers", unpack(opts)
 
 keymap('n', '<Leader>#', ":set number!<cr>", { desc = "Numbers toggle", unpack(opts) })
 
-keymap('n', '<leader>ls', '<cmd>LspStart <cr>',  {desc = "Start lsp", unpack(opts) })
-keymap('n', '<leader>lS', '<cmd>LspStop <cr>',  {desc = "Stop lsp", unpack(opts) })
-
 -- Diagnostic keymaps
 keymap('n', '<leader>e', vim.diagnostic.open_float)
 keymap('n', '[d', vim.diagnostic.goto_prev)
@@ -55,7 +52,7 @@ keymap('i', '<C-s>', "<C-o>:w<cr>", opts)
 --"disable highlighting by double Esc
 -- keymap('n', '<Esc><Esc>', ":noh<cr>", opts)
 --
--- "write with sudo 
+-- "write with sudo
 -- command -nargs=0 SUw w !sudo tee %
 -- '")
 -- "

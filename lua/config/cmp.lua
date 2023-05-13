@@ -2,7 +2,7 @@ local cmp = require'cmp'
 local luasnip = require 'luasnip'
 local keymap = vim.api.nvim_set_keymap
 
-local confirm = function(fallback) 
+local confirm = function(fallback)
   if cmp.visible() then
     cmp.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
@@ -13,7 +13,10 @@ local confirm = function(fallback)
   end
 end
 
-local snippetTrigger = function() 
+local snippetTrigger = function()
+  if cmp.visible() then
+    cmp.select_prev_item({behavior = cmp.SelectBehavior.Select})
+  else
   cmp.complete({
     config = {
       sources = {
@@ -21,6 +24,7 @@ local snippetTrigger = function()
       }
     }
   })
+	end
 end
 
 local allBuffersSource  = function()
@@ -38,13 +42,13 @@ local bufTrigger = function()
     cmp.complete({
       config = {
         sources = {
-          { 
+          {
             name = 'buffer',
             option = {
               get_bufnrs = allBuffersSource,
             },
           { name = "tmux" }
-          }, 
+          },
         }
       }
     })
@@ -121,13 +125,13 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { 
+    {
       name = 'buffer',
       option = {
         get_bufnrs = allBuffersSource,
       }
-    }, 
-    { name = 'tmux' }, 
+    },
+    { name = 'tmux' },
   },
 }
 
@@ -144,7 +148,7 @@ cmp.setup.cmdline("/", {
     ['<CR>'] = {c = confirm},
   }),
   sources = {
-    { 
+    {
       name = "buffer",
       option = {
         get_bufnrs = allBuffersSource,
@@ -178,7 +182,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-return { 
+return {
   bufTrigger = bufTrigger,
   lspTrigger = lspTrigger,
   snippetTrigger = snippetTrigger,

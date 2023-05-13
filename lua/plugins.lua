@@ -81,21 +81,22 @@ return {
 	},
 	{
 		"folke/twilight.nvim",
+		cmd = { "Twilight" },
 	},
 	-----------------------------------------------------
 
 	--- LSP and Completion ---------------------------
 	{
 		"neovim/nvim-lspconfig",
-		cmd = { "LspStart" },
+		lazy=false,
 		config = function()
 			require("config.lsp")
 		end,
 	},
 
-	{
-		"jose-elias-alvarez/typescript.nvim",
-	},
+	-- {
+	-- 	"jose-elias-alvarez/typescript.nvim",
+	-- },
 
 	{
 		"hrsh7th/nvim-cmp",
@@ -210,17 +211,28 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		keys = { "n", "<Leader>f" },
+    dependencies = { "telescope-fzf-native.nvim" },
 		cmd = { "Telescope" },
 		config = function()
 			require("config.telescope")
 		end,
 	},
 
-	--  {
-	--   'windwp/nvim-spectre',
-	--   config = function() require'config.spectre' end
-	-- }
-	--  { 'dyng/ctrlsf.vim' }
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "make",
+	},
+
+
+	{
+		'windwp/nvim-spectre',
+		config = function() require'config.spectre' end
+	},
+
+	{
+		'dyng/ctrlsf.vim',
+		cmd = { "CtrlSF" },
+	},
 	-----------------------------------------------------
 
 	--- Git ---------------------------
@@ -239,13 +251,19 @@ return {
 			require("config.diffview")
 		end,
 	},
-	-- 'emmanueltouzery/agitator.nvim',
+	{
+		'emmanueltouzery/agitator.nvim',
+		keys = { "n", "<Leader>gb" },
+		config = function()
+			require("config.agitator")
+		end,
+	},
 
-	{ "tpope/vim-fugitive", keys = { "n", "<Leader>g" } },
+	-- { "tpope/vim-fugitive", keys = { "n", "<Leader>g" } },
 	-----------------------------------------------------
 
 	--- Appearence ---------------------------
-	{ "nvim-tree/nvim-web-devicons", lazy = false },
+	-- { "nvim-tree/nvim-web-devicons", lazy = false },
 	--themes
 	{
 		"ellisonleao/gruvbox.nvim",
@@ -286,21 +304,22 @@ return {
 
 	--- Floating Code ---------------------------
 	--commenting tool
+	-- {
+	-- 	"tpope/vim-abolish",
+	-- 	lazy = false,
+	-- 	-- event = "BufReadPost",
+	-- },
 	{
-		"tpope/vim-abolish",
-		lazy = false,
-		-- event = "BufReadPost",
+	  'numToStr/Comment.nvim',
+		keys = { { "gc", mode = { "n", "v" } }, { "gb", mode = { "n", "v" } } },
+	  config = function()
+	      require('Comment').setup()
+	  end
 	},
-	--  {
-	--   'numToStr/Comment.nvim',
-	--   config = function()
-	--       require('Comment').setup()
-	--   end
-	-- }
-	{
-		"tpope/vim-commentary",
-		keys = { { "gc", mode = "v" }, "gcc" },
-	},
+	-- {
+	-- 	"tpope/vim-commentary",
+	-- 	keys = { { "gc", mode = "v" }, "gcc" },
+	-- },
 
 	{
 		"danymat/neogen",
@@ -309,13 +328,22 @@ return {
 	},
 
 	--surrounder
+	-- {
+	-- 	"tpope/vim-surround",
+	-- 	-- 'kylechui/nvim-surround',
+	-- 	event = { "InsertEnter" },
+	-- 	-- config = function()
+	-- 	--   require("nvim-surround").setup()
+	-- 	--   end
+	-- },
 	{
-		"tpope/vim-surround",
-		-- 'kylechui/nvim-surround',
+		"kylechui/nvim-surround",
 		event = { "InsertEnter" },
-		-- config = function()
-		--   require("nvim-surround").setup()
-		--   end
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end
 	},
 	{
 		"windwp/nvim-autopairs",
@@ -325,10 +353,10 @@ return {
 		end,
 	},
 	--repeat by "." for custom plugins
-	{
-		"tpope/vim-repeat",
-		lazy = false,
-	},
+	-- {
+	-- 	"tpope/vim-repeat",
+	-- 	lazy = false,
+	-- },
 	-----------------------------------------------------
 
 	---- Writers work -----------------------------------
@@ -350,5 +378,10 @@ return {
 			require("mason").setup()
 		end,
 	},
+
+	{
+		"folke/neodev.nvim",
+		ft="lua",
+  },
 	-- { "https://git.sr.ht/~soywod/himalaya-vim", lazy = false },
 }

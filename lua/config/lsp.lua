@@ -3,6 +3,8 @@ local keymap = vim.keymap.set
 
 local outerOpts = { noremap=true, silent=true }
 
+keymap('n', '<leader>ls', '<cmd>LspStart <cr>',  {desc = "Start lsp", unpack(opts) })
+keymap('n', '<leader>lS', '<cmd>LspStop <cr>',  {desc = "Stop lsp", unpack(opts) })
 
 local on_attach = function(_, bufnr)
   local opts = { buffer = bufnr }
@@ -24,7 +26,7 @@ end
 -- }
 
 -- Enable the following language servers
-local servers = { 'gopls', 'vuels', 'pyright', 'cssls', 'lua_ls', 'bashls', 'eslint', 'marksman' }
+local servers = { 'gopls', 'vuels', 'tsserver', 'pyright', 'cssls', 'lua_ls', 'bashls', 'eslint', 'marksman' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     autostart = false,
@@ -34,13 +36,13 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-require("typescript").setup({
-  disable_commands = false, -- prevent the plugin from creating Vim commands
-  debug = false, -- enable debug logging for commands
-  server = { -- pass options to lspconfig's setup method
-    autostart = false,
-    on_attach = on_attach,
-    handlers = handlers,
-    capabilities = capabilities,
-  },
-})
+-- require("typescript").setup({
+--   disable_commands = false, -- prevent the plugin from creating Vim commands
+--   debug = false, -- enable debug logging for commands
+--   server = { -- pass options to lspconfig's setup method
+--     autostart = false,
+--     on_attach = on_attach,
+--     handlers = handlers,
+--     capabilities = capabilities,
+--   },
+-- })
