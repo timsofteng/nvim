@@ -1,3 +1,5 @@
+vim.keymap.set("n", "<Leader>pp", "<cmd>Oil<CR>", { desc = "Oil" })
+
 require("oil").setup({
 	-- use_default_keymaps = false,
 	keymaps = {

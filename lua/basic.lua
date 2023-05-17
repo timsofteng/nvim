@@ -1,4 +1,4 @@
-vim.opt.hidden = false
+-- vim.opt.hidden = false
 vim.opt.smartindent = true
 vim.opt.undofile = true
 vim.opt.backupcopy = "yes"

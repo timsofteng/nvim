@@ -6,6 +6,7 @@ local outerOpts = { noremap=true, silent=true }
 keymap('n', '<leader>ls', '<cmd>LspStart <cr>',  {desc = "Start lsp", unpack(opts) })
 keymap('n', '<leader>lS', '<cmd>LspStop <cr>',  {desc = "Stop lsp", unpack(opts) })
 
+
 local on_attach = function(_, bufnr)
   local opts = { buffer = bufnr }
   keymap('n', 'gD', vim.lsp.buf.declaration, opts)

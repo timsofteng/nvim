@@ -46,7 +46,12 @@ telescope.setup {
   },
   pickers = {
 		buffers = {
-			sort_lastused = true
+			sort_lastused = true,
+			mappings = {
+				i = {
+					["<C-d>"] = "delete_buffer",
+				}
+			}
 		},
     live_grep = {
       preview = {

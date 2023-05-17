@@ -14,13 +14,14 @@ keymap('n', '<Leader>#', ":set number!<cr>", { desc = "Numbers toggle", unpack(o
 -- Diagnostic keymaps
 keymap('n', '<leader>e', vim.diagnostic.open_float)
 keymap('n', '[d', vim.diagnostic.goto_prev)
-keymap('n', '<C-p>', vim.diagnostic.goto_prev)
-keymap('n', '<C-n>', vim.diagnostic.goto_next)
+keymap('n', ']d', vim.diagnostic.goto_next)
 keymap('n', '<leader>q', vim.diagnostic.setloclist)
 
 --Buffers
-keymap('n', '[b', ":bprev<cr>", {desc = "Prev buffer", unpack(opts) })
-keymap('n', ']b', ":bnext<cr>", {desc = "Next buffer", unpack(opts) })
+keymap('n', '[b', "<cmd>bprev<cr>", {desc = "Prev buffer", unpack(opts) })
+keymap('n', ']b', "<cmd>bnext<cr>", {desc = "Next buffer", unpack(opts) })
+keymap('n', '<C-p>', "<cmd>bprev<cr>", {desc = "Prev buffer", unpack(opts) })
+keymap('n', '<C-n>', "<cmd>bnext<cr>", {desc = "Next buffer", unpack(opts) })
 
 -- quickfix
 keymap('n', '<Leader>qo', ":copen<cr>",  {desc = "Open qf", unpack(opts) })
@@ -37,9 +38,6 @@ keymap('v', '<Leader>@', ":'<,'>w !ixi<cr>",  {desc = "Load to pastebin", unpack
 keymap('i', '<C-e>', "<C-o>$", opts)
 keymap('i', '<C-s>', "<C-o>:w<cr>", opts)
 
--- Remap for dealing with word wrap
--- keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", {expr = true, silent = true})
--- keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", {expr = true, silent = true})
 
 -- keymap('n', '<Leader>qq',  require("utils").toggleQuickFix, {noremap = true})
 
@@ -50,8 +48,8 @@ keymap('i', '<C-s>', "<C-o>:w<cr>", opts)
 -- "search word in visual mode by predding "//"
 -- vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 --
---"disable highlighting by double Esc
--- keymap('n', '<Esc><Esc>', ":noh<cr>", opts)
+-- "disable highlighting by double Esc
+keymap('n', '<Esc><Esc>', ":noh<cr>", opts)
 --
 -- "write with sudo
 -- command -nargs=0 SUw w !sudo tee %
@@ -61,3 +59,5 @@ keymap('i', '<C-s>', "<C-o>:w<cr>", opts)
 keymap('n', '<Leader>cp', ":let @+=expand('%')<cr>", {desc = "Copy relative path", unpack(opts) })
 keymap('n', '<Leader>cP', ":let @+=expand('%:p')<cr>", {desc = "Copy absolute path", unpack(opts) })
 keymap('v', '<Leader>y', '"+y', opts)
+
+keymap("n", "<C-L>", ":noh<cr>", { desc = "noh", unpack(opts) })

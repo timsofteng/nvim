@@ -26,28 +26,34 @@ return {
 	--- Navigation ---------------------------
 	{
 		"stevearc/oil.nvim",
-		cmd = { "Oil" },
+		lazy = false,
 		config = function()
 			require("config.oil")
 		end,
 	},
 	{
-		"kyazdani42/nvim-tree.lua",
-		cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
-		config = function()
-			require("config.nvim-tree")
-		end,
+		"chrishrb/gx.nvim",
+		event = { "BufEnter" },
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = true, -- default settings
 	},
-
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
-		cmd = { "Neotree" },
-		dependencies = {
-			"s1n7ax/nvim-window-picker",
-			"MunifTanjim/nui.nvim",
-		},
-	},
+	-- {
+	-- 	"kyazdani42/nvim-tree.lua",
+	-- 	cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
+	-- 	config = function()
+	-- 		require("config.nvim-tree")
+	-- 	end,
+	-- },
+	--
+	-- {
+	-- 	"nvim-neo-tree/neo-tree.nvim",
+	-- 	branch = "v2.x",
+	-- 	cmd = { "Neotree" },
+	-- 	dependencies = {
+	-- 		"s1n7ax/nvim-window-picker",
+	-- 		"MunifTanjim/nui.nvim",
+	-- 	},
+	-- },
 	-- {
 	--   'ggandor/leap.nvim',
 	--    config = function() require('leap').add_default_mappings() end,
@@ -93,6 +99,13 @@ return {
 			require("config.lsp")
 		end,
 	},
+	{
+		"dmmulroy/tsc.nvim",
+		ft = {"typescript", "typescriptreact"},
+		config = function()
+			require('tsc').setup()
+		end,
+	},
 
 	-- {
 	-- 	"jose-elias-alvarez/typescript.nvim",
@@ -131,8 +144,6 @@ return {
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-path",
 			"andersevenrud/cmp-tmux",
-			"rafamadriz/friendly-snippets",
-			"saadparwaiz1/cmp_luasnip",
 		},
 		config = function()
 			require("config.cmp")
@@ -163,7 +174,6 @@ return {
 	--- Debug ---------------------------
 	{
 		"mfussenegger/nvim-dap",
-		-- lazy = false,
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
 		},
@@ -263,11 +273,46 @@ return {
 		-- cmd = { "Neogit" },
 		keys = { "n", "<Leader>gg"}
 	},
+	-- {
+	-- 	'tanvirtin/vgit.nvim',
+	-- 	lazy = false,
+	-- 	config = function()
+	-- 		require('vgit').setup()
+	-- 	end,
+	-- },
 
 	-- { "tpope/vim-fugitive", keys = { "n", "<Leader>g" } },
 	-----------------------------------------------------
 
 	--- Appearence ---------------------------
+	{
+		"folke/noice.nvim",
+		-- lazy = false,
+		config = function()
+			require("noice").setup({
+				lsp = {
+					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+					override = {
+						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+						["vim.lsp.util.stylize_markdown"] = true,
+						["cmp.entry.get_documentation"] = true,
+					},
+				},
+				-- you can enable a preset for easier configuration
+				presets = {
+					bottom_search = true, -- use a classic bottom cmdline for search
+					-- command_palette = true, -- position the cmdline and popupmenu together
+					long_message_to_split = true, -- long messages will be sent to a split
+					inc_rename = false, -- enables an input dialog for inc-rename.nvim
+					-- lsp_doc_border = false, -- add a border to hover docs and signature help
+				},
+			})
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		}
+	},
 	-- { "nvim-tree/nvim-web-devicons", lazy = false },
 	--themes
 	{
@@ -309,22 +354,28 @@ return {
 
 	--- Floating Code ---------------------------
 	--commenting tool
-	-- {
-	-- 	"tpope/vim-abolish",
-	-- 	lazy = false,
-	-- 	-- event = "BufReadPost",
-	-- },
 	{
-	  'numToStr/Comment.nvim',
-		keys = { { "gc", mode = { "n", "v" } }, { "gb", mode = { "n", "v" } } },
-	  config = function()
-	      require('Comment').setup()
-	  end
+		"tpope/vim-abolish",
+		lazy = false,
 	},
 	-- {
-	-- 	"tpope/vim-commentary",
-	-- 	keys = { { "gc", mode = "v" }, "gcc" },
+	-- 	'numToStr/Comment.nvim',
+	-- 	keys = { { "gc", mode = { "n", "v" } }, { "gb", mode = { "n", "v" } } },
+	-- 	dependencies = {
+	-- 		"JoosepAlviste/nvim-ts-context-commentstring",
+	-- 	},
+	-- 	config = function()
+	-- 		require('Comment').setup({
+	-- 			{
+	-- 				pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+	-- 			}
+	-- 		})
+	-- 	end
 	-- },
+	{
+		"tpope/vim-commentary",
+		keys = { { "gc", mode = "v" }, "gcc" },
+	},
 
 	{
 		"danymat/neogen",
@@ -345,10 +396,8 @@ return {
 		"kylechui/nvim-surround",
 		event = { "InsertEnter" },
 		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
-		end
+			require("config.surround")
+		end,
 	},
 	{
 		"windwp/nvim-autopairs",
