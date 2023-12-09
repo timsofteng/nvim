@@ -10,4 +10,4 @@ keymap("n", "<Leader><Leader>", ":ZenMode<cr>", { desc = "Zen mode", unpack(opts
 keymap("n", "<Leader>P", "<cmd>NvimTreeFindFile<CR>", { desc = "Tree (find)" })
 keymap("n", "<Leader>*", [[:UndotreeToggle<cr>]], { desc = "UndoTree", unpack(opts) })
 
-keymap('n', '<Leader>gg', ":Neogit<cr>", opts)
+keymap("n", "<Leader>gg", ":Neogit<cr>", { desc = "Neogit", unpack(opts) })

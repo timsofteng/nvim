@@ -1,7 +1,12 @@
 vim.keymap.set("n", "<Leader>pp", "<cmd>Oil<CR>", { desc = "Oil" })
+vim.keymap.set("n", "<Leader>P", "<cmd>vs|Oil<CR>", { desc = "Oil" })
+local oil = require("oil")
 
-require("oil").setup({
+-- oil.select({ close = true })
+
+oil.setup({
 	-- use_default_keymaps = false,
+	select = { close = true },
 	keymaps = {
 		["g?"] = "actions.show_help",
 		["<CR>"] = "actions.select",
@@ -10,7 +15,7 @@ require("oil").setup({
 		["<C-t>"] = "actions.select_tab",
 		["<C-p>"] = "actions.preview",
 		["<C-c>"] = "actions.close",
-		["<C-L>"] = "actions.refresh",
+		-- ["<C-L>"] = "actions.refresh",
 		["-"] = "actions.parent",
 		["_"] = "actions.open_cwd",
 		["`"] = "actions.cd",

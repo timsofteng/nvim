@@ -1,6 +1,4 @@
 return {
-	-- Packer can manage itself as an optional plugin
-	{ "nvim-lua/popup.nvim" },
 	{ "nvim-lua/plenary.nvim" },
 
 	--- Project and Sessions ---------------------------
@@ -23,6 +21,18 @@ return {
 	},
 	-----------------------------------------------------
 
+	--Lang
+	{
+		'Wansmer/langmapper.nvim',
+		lazy = false,
+		priority = 1, -- High priority is needed if you will use `autoremap()`
+		config = function()
+			require("config.langmapper")
+		end,
+	},
+
+	-----------------------------------------------------
+
 	--- Navigation ---------------------------
 	{
 		"stevearc/oil.nvim",
@@ -31,28 +41,11 @@ return {
 			require("config.oil")
 		end,
 	},
-	{
-		"chrishrb/gx.nvim",
-		event = { "BufEnter" },
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = true, -- default settings
-	},
 	-- {
-	-- 	"kyazdani42/nvim-tree.lua",
-	-- 	cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
-	-- 	config = function()
-	-- 		require("config.nvim-tree")
-	-- 	end,
-	-- },
-	--
-	-- {
-	-- 	"nvim-neo-tree/neo-tree.nvim",
-	-- 	branch = "v2.x",
-	-- 	cmd = { "Neotree" },
-	-- 	dependencies = {
-	-- 		"s1n7ax/nvim-window-picker",
-	-- 		"MunifTanjim/nui.nvim",
-	-- 	},
+	-- 	"chrishrb/gx.nvim",
+	-- 	event = { "BufEnter" },
+	-- 	dependencies = { "nvim-lua/plenary.nvim" },
+	-- 	config = true, -- default settings
 	-- },
 	-- {
 	--   'ggandor/leap.nvim',
@@ -78,34 +71,52 @@ return {
 			require("config.zen")
 		end,
 	},
-	{
-		"folke/which-key.nvim",
-		lazy = false,
-		config = function()
-			require("config.which-key")
-		end,
-	},
-	{
-		"folke/twilight.nvim",
-		cmd = { "Twilight" },
-	},
-	-----------------------------------------------------
+	 {
+	 	"folke/which-key.nvim",
+	 	lazy = false,
+	 	config = function()
+	 		require("config.which-key")
+	 	end,
+	 },
+	 {
+	 	"folke/twilight.nvim",
+	 	cmd = { "Twilight" },
+	 },
+	---------------------------------------------------
 
 	--- LSP and Completion ---------------------------
 	{
 		"neovim/nvim-lspconfig",
-		lazy=false,
+		lazy = false,
 		config = function()
 			require("config.lsp")
 		end,
 	},
 	{
 		"dmmulroy/tsc.nvim",
-		ft = {"typescript", "typescriptreact"},
+		ft = { "typescript", "typescriptreact" },
 		config = function()
-			require('tsc').setup()
+			require("tsc").setup({
+				flags = {
+					incremental = true,
+				},
+			})
 		end,
 	},
+	{ "j-hui/fidget.nvim" },
+	-- {
+	-- 	"pmizio/typescript-tools.nvim",
+	-- 	ft = { "typescript", "typescriptreact" },
+	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	-- 	opts = {},
+	-- 	config = function()
+	-- 		require("typescript-tools").setup({
+	-- 			settings = {
+	-- 				tsserver_plugins = { "typescript-styled-plugin" },
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- {
 	-- 	"jose-elias-alvarez/typescript.nvim",
@@ -114,30 +125,30 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		event = { "InsertEnter", "CmdlineEnter" },
-		-- keys = {
-		--   {
-		-- '<C-n>',
-		-- function() require('config.cmp').bufKey() end,
-		-- mode = 'i',
-		--   },
-		--   {
-		-- '<C-p>',
-		-- function() require('config.cmp').lspKey() end,
-		-- mode = 'i',
-		--   },
-		--   {
-		-- '<C-l>',
-		-- function() require('config.cmp').snippetKey() end,
-		-- mode = 'i',
-		--   },
-		-- },
-		-- keys = {
-		--   {"<c-n>", mode = "i"},
-		--   {"<c-l>", mode = "i"},
-		--   {"<c-p>", mode = "i"},
-		--   {"<c-i>", mode = "c"},
-		-- },
-		-- lazy = false,
+		keys = {
+		  {
+		'<C-n>',
+		function() require('config.cmp').bufKey() end,
+		mode = 'i',
+		  },
+		  {
+		'<C-p>',
+		function() require('config.cmp').lspKey() end,
+		mode = 'i',
+		  },
+		  {
+		'<C-l>',
+		function() require('config.cmp').snippetKey() end,
+		mode = 'i',
+		  },
+		},
+		keys = {
+		  {"<c-n>", mode = "i"},
+		  {"<c-l>", mode = "i"},
+		  {"<c-p>", mode = "i"},
+		  {"<c-i>", mode = "c"},
+		},
+		lazy = false,
 		dependencies = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-nvim-lsp",
@@ -161,13 +172,6 @@ return {
 		},
 	},
 
-	{
-		"j-hui/fidget.nvim",
-		cmd = { "LspStart" },
-		config = function()
-			require("config.fidget")
-		end,
-	},
 	--  { 'mattn/emmet-vim' }
 	-----------------------------------------------------
 
@@ -221,7 +225,7 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		keys = { "n", "<Leader>f" },
-    dependencies = { "telescope-fzf-native.nvim" },
+		dependencies = { "telescope-fzf-native.nvim" },
 		cmd = { "Telescope" },
 		config = function()
 			require("config.telescope")
@@ -233,19 +237,17 @@ return {
 		build = "make",
 	},
 
-
 	{
-		'windwp/nvim-spectre',
-		config = function() require'config.spectre' end
-	},
-
-	{
-		'dyng/ctrlsf.vim',
+		"dyng/ctrlsf.vim",
 		cmd = { "CtrlSF" },
 	},
 	-----------------------------------------------------
 
 	--- Git ---------------------------
+	{'akinsho/git-conflict.nvim',
+		lazy = false,
+		version = "*",
+		config = true},
 	{
 		"lewis6991/gitsigns.nvim",
 		keys = { "n", "<Leader>gs" },
@@ -262,61 +264,30 @@ return {
 		end,
 	},
 	{
-		'emmanueltouzery/agitator.nvim',
+		"emmanueltouzery/agitator.nvim",
 		keys = { "n", "<Leader>gb" },
 		config = function()
 			require("config.agitator")
 		end,
 	},
 	{
-		"TimUntersberger/neogit",
+		"NeogitOrg/neogit",
 		-- cmd = { "Neogit" },
-		keys = { "n", "<Leader>gg"}
+		keys = { "n", "<Leader>gg" },
+		config = true,
+		-- config = function()
+		-- 	require("config.neogit")
+		-- end,
 	},
-	-- {
-	-- 	'tanvirtin/vgit.nvim',
-	-- 	lazy = false,
-	-- 	config = function()
-	-- 		require('vgit').setup()
-	-- 	end,
-	-- },
 
 	-- { "tpope/vim-fugitive", keys = { "n", "<Leader>g" } },
 	-----------------------------------------------------
 
 	--- Appearence ---------------------------
-	{
-		"folke/noice.nvim",
-		-- lazy = false,
-		config = function()
-			require("noice").setup({
-				lsp = {
-					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-					override = {
-						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-						["vim.lsp.util.stylize_markdown"] = true,
-						["cmp.entry.get_documentation"] = true,
-					},
-				},
-				-- you can enable a preset for easier configuration
-				presets = {
-					bottom_search = true, -- use a classic bottom cmdline for search
-					-- command_palette = true, -- position the cmdline and popupmenu together
-					long_message_to_split = true, -- long messages will be sent to a split
-					inc_rename = false, -- enables an input dialog for inc-rename.nvim
-					-- lsp_doc_border = false, -- add a border to hover docs and signature help
-				},
-			})
-		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		}
-	},
-	-- { "nvim-tree/nvim-web-devicons", lazy = false },
 	--themes
 	{
 		"ellisonleao/gruvbox.nvim",
+		priority = 100,
 		lazy = false,
 		config = function()
 			require("config.colorscheme")
@@ -380,7 +351,9 @@ return {
 	{
 		"danymat/neogen",
 		dependencies = "nvim-treesitter/nvim-treesitter",
+		cmd = "Neogen",
 		config = true,
+		version = "*",
 	},
 
 	--surrounder
@@ -406,11 +379,6 @@ return {
 			require("config.autopairs")
 		end,
 	},
-	--repeat by "." for custom plugins
-	-- {
-	-- 	"tpope/vim-repeat",
-	-- 	lazy = false,
-	-- },
 	-----------------------------------------------------
 
 	---- Writers work -----------------------------------
@@ -423,6 +391,13 @@ return {
 
 	---- Integrations -----------------------------------
 	--  { 'NTBBloodbath/rest.nvim' }
+	{
+		"aserowy/tmux.nvim",
+		lazy = false,
+		-- config = function()
+		-- 	require("config.tmux")
+		-- end,
+	},
 	"tpope/vim-dadbod",
 	"kristijanhusak/vim-dadbod-ui",
 	{
@@ -435,7 +410,15 @@ return {
 
 	{
 		"folke/neodev.nvim",
-		ft="lua",
-  },
+		ft = "lua",
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		ft = "markdown",
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
+
 	-- { "https://git.sr.ht/~soywod/himalaya-vim", lazy = false },
 }

@@ -1,41 +1,55 @@
---resp-nvim
-local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-parser_configs.http = {
-  install_info = {
-    url = "https://github.com/NTBBloodbath/tree-sitter-http",
-    files = { "src/parser.c" },
-    branch = "main",
-  },
-}
+require("nvim-treesitter.configs").setup({
+	ensure_installed = {
+		"c",
+		"bash",
+		"lua",
+		"vim",
+		"javascript",
+		"typescript",
+		"python",
+		"tsx",
+		"go",
+		"css",
+		"scss",
+		"html",
+		"jq",
+		"json",
+		"regex",
+		"dot",
+		-- "yaml",
+		"ini",
+		"diff",
+		"make",
+		"markdown",
+		"gitcommit",
+		"gitignore",
+		"hurl"
+	},
 
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { 
-    "c", "lua", "vim", "help", "typescript", "tsx", "go" 
-  },
+	highlight = {
+		enable = true, -- false will disable the whole extension
+		disable = {}, -- list of language that will be disabled
+	},
+	autotag = {
+		enable = true,
+	},
+	-- not work good yet
+	indent = {
+		enable = true,
+	},
+	matchup = {
+		enable = true,
+	},
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			node_incremental = ";",
+			node_decremental = ",",
+		},
+	},
+	autopairs = { enable = true },
+})
 
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { },  -- list of language that will be disabled
-  },
-  autotag = {
-    enable = true,
-  },
-  context_commentstring = {
-    enable = true,
-  },
-  -- not work good yet
-  indent = {
-    enable = true,
-  },
-  matchup = {
-    enable = true,
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      node_incremental = ';',
-      node_decremental = ',',
-    },
-  },
-  autopairs = {enable = true}
+require('ts_context_commentstring').setup {
 }
+-- vim.g.skip_ts_context_commentstring_module = true

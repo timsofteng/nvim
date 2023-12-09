@@ -60,4 +60,4 @@ keymap('n', '<Leader>cp', ":let @+=expand('%')<cr>", {desc = "Copy relative path
 keymap('n', '<Leader>cP', ":let @+=expand('%:p')<cr>", {desc = "Copy absolute path", unpack(opts) })
 keymap('v', '<Leader>y', '"+y', opts)
 
-keymap("n", "<C-L>", ":noh<cr>", { desc = "noh", unpack(opts) })
+-- keymap("n", "<C-L>", ":noh<cr>", { desc = "noh", unpack(opts) })
