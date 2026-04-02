@@ -28,9 +28,7 @@ vim.pack.add({
 	"https://github.com/stevearc/conform.nvim",
 	"https://github.com/mfussenegger/nvim-lint",
 	"https://github.com/tpope/vim-abolish",
-	"https://github.com/FabijanZulj/blame.nvim",
 	"https://github.com/nvim-telescope/telescope.nvim",
-	"https://github.com/ThePrimeagen/harpoon",
 	"https://github.com/hrsh7th/nvim-cmp",
 	"https://github.com/L3MON4D3/LuaSnip",
 	"https://github.com/hrsh7th/cmp-buffer",
@@ -70,9 +68,7 @@ vim.defer_fn(function()
 	require("dap-go").setup()
 	require("config.conform")
 	require("config.nvim-lint")
-	require("blame").setup()
 	require("config.telescope")
-	require("config.harpoon")
 	require("config.cmp")
 	require("config.luasnip")
 	require("mini.pairs").setup()
