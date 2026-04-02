@@ -1,165 +1,110 @@
-local add = MiniDeps.add
-local now, later = MiniDeps.now, MiniDeps.later
+vim.pack.add({
+  { src = "https://github.com/echasnovski/mini.sessions", name = "mini.sessions" },
+  { src = "https://github.com/tpope/vim-sleuth", name = "vim-sleuth" },
+  { src = "https://github.com/stevearc/oil.nvim", name = "oil.nvim" },
+  { src = "https://github.com/ellisonleao/gruvbox.nvim", name = "gruvbox.nvim" },
+  { src = "https://github.com/nvim-lualine/lualine.nvim", name = "lualine.nvim" },
+  { src = "https://github.com/akinsho/git-conflict.nvim", name = "git-conflict.nvim" },
+  { src = "https://github.com/keaising/im-select.nvim", name = "im-select.nvim" },
+  { src = "https://github.com/hat0uma/csvview.nvim", name = "csvview.nvim" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter", name = "nvim-treesitter" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter-context", name = "nvim-treesitter-context" },
+  { src = "https://github.com/windwp/nvim-ts-autotag", name = "nvim-ts-autotag" },
+  { src = "https://github.com/neovim/nvim-lspconfig", name = "nvim-lspconfig" },
+})
 
-now(function()
-	add("echasnovski/mini.sessions")
-	require("mini.sessions").setup()
+vim.pack.add({
+  { src = "https://github.com/nvim-lua/plenary.nvim", name = "plenary.nvim" },
+  { src = "https://github.com/stevearc/aerial.nvim", name = "aerial.nvim" },
+  { src = "https://github.com/folke/ts-comments.nvim", name = "ts-comments.nvim" },
+  { src = "https://github.com/lewis6991/gitsigns.nvim", name = "gitsigns.nvim" },
+  { src = "https://github.com/j-hui/fidget.nvim", name = "fidget.nvim" },
+  { src = "https://github.com/arithran/vim-delete-hidden-buffers", name = "vim-delete-hidden-buffers" },
+  { src = "https://github.com/folke/zen-mode.nvim", name = "zen-mode.nvim" },
+  { src = "https://github.com/dmmulroy/tsc.nvim", name = "tsc.nvim" },
+})
 
-	add("tpope/vim-sleuth")
+vim.pack.add({
+  { src = "https://github.com/mfussenegger/nvim-dap", name = "nvim-dap" },
+  { src = "https://github.com/igorlfs/nvim-dap-view", name = "nvim-dap-view" },
+  { src = "https://github.com/nvim-neotest/nvim-nio", name = "nvim-nio" },
+  { src = "https://github.com/leoluz/nvim-dap-go", name = "nvim-dap-go" },
+})
 
-	add("stevearc/oil.nvim")
-	require("config.oil")
+vim.pack.add({
+  { src = "https://github.com/nvim-neotest/neotest", name = "neotest" },
+  { src = "https://github.com/antoinemadec/FixCursorHold.nvim", name = "FixCursorHold.nvim" },
+})
 
-	add("ellisonleao/gruvbox.nvim")
-	require("config.colorscheme")
+vim.pack.add({
+  { src = "https://github.com/stevearc/conform.nvim", name = "conform.nvim" },
+  { src = "https://github.com/mfussenegger/nvim-lint", name = "nvim-lint" },
+  { src = "https://github.com/tpope/vim-abolish", name = "vim-abolish" },
+  { src = "https://github.com/FabijanZulj/blame.nvim", name = "blame.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope.nvim", name = "telescope.nvim" },
+})
 
-	add("nvim-lualine/lualine.nvim")
-	require("config.lualine")
+vim.pack.add({
+  { src = "https://github.com/ThePrimeagen/harpoon", name = "harpoon" },
+})
 
-	add("akinsho/git-conflict.nvim")
-	require("git-conflict").setup({})
+vim.pack.add({
+  { src = "https://github.com/hrsh7th/nvim-cmp", name = "nvim-cmp" },
+  { src = "https://github.com/L3MON4D3/LuaSnip", name = "LuaSnip" },
+  { src = "https://github.com/hrsh7th/cmp-buffer", name = "cmp-buffer" },
+  { src = "https://github.com/hrsh7th/cmp-nvim-lsp", name = "cmp-nvim-lsp" },
+  { src = "https://github.com/hrsh7th/cmp-cmdline", name = "cmp-cmdline" },
+  { src = "https://github.com/hrsh7th/cmp-path", name = "cmp-path" },
+  { src = "https://github.com/andersevenrud/cmp-tmux", name = "cmp-tmux" },
+})
 
-	add("keaising/im-select.nvim")
-	require("im_select").setup({})
+vim.pack.add({
+  { src = "https://github.com/rafamadriz/friendly-snippets", name = "friendly-snippets" },
+  { src = "https://github.com/saadparwaiz1/cmp_luasnip", name = "cmp_luasnip" },
+})
 
-	add("hat0uma/csvview.nvim")
-	require("config.csvview")
+vim.pack.add({
+  { src = "https://github.com/echasnovski/mini.pairs", name = "mini.pairs" },
+  { src = "https://github.com/aserowy/tmux.nvim", name = "tmux.nvim" },
+  { src = "https://github.com/echasnovski/mini.clue", name = "mini.clue" },
+  { src = "https://github.com/echasnovski/mini.surround", name = "mini.surround" },
+  { src = "https://codeberg.org/trevorhauter/gitportal.nvim", name = "gitportal.nvim" },
+  { src = "https://github.com/brianhuster/live-preview.nvim", name = "live-preview.nvim" },
+})
 
-	add({
-		source = "nvim-treesitter/nvim-treesitter",
-		depends = {
-			"nvim-treesitter/nvim-treesitter-context",
-			"windwp/nvim-ts-autotag",
-		},
-		hooks = {
-			post_checkout = function()
-				vim.cmd("TSUpdate")
-			end,
-		},
-	})
-	require("config.treesitter")
+require("mini.sessions").setup()
+require("config.oil")
+require("config.colorscheme")
+require("config.lualine")
+require("git-conflict").setup({})
+require("im_select").setup({})
+require("config.csvview")
+require("config.treesitter")
+require("config.lsp")
 
-	add("neovim/nvim-lspconfig")
-	require("config.lsp")
-end)
-
-later(function()
-	vim.cmd.packadd("nvim.undotree")
-
-	-- a lot of plugins use it
-	add("nvim-lua/plenary.nvim")
-
-	add("stevearc/aerial.nvim")
-	require("config.aerial")
-
-	add("folke/ts-comments.nvim")
-	require("ts-comments").setup()
-
-	add("lewis6991/gitsigns.nvim")
-	require("config.gitsigns")
-
-	add("j-hui/fidget.nvim")
-	require("fidget").setup({})
-
-	add("arithran/vim-delete-hidden-buffers")
-
-	add("folke/zen-mode.nvim")
-	require("config.zen")
-
-	add("dmmulroy/tsc.nvim")
-	require("tsc").setup({
-		flags = {
-			incremental = true,
-		},
-	})
-
-	add({
-		source = "mfussenegger/nvim-dap",
-		depends = {
-			"igorlfs/nvim-dap-view",
-			"nvim-neotest/nvim-nio",
-			"leoluz/nvim-dap-go",
-		},
-	})
-	require("config.dap")
-	require("dap-go").setup()
-
-	add({
-		source = "nvim-neotest/neotest",
-		depends = {
-			"nvim-neotest/nvim-nio",
-			"antoinemadec/FixCursorHold.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			-- "fredrikaverpil/neotest-golang",
-		},
-	})
-	-- require("config.neotest")
-	-- add({
-	-- 	source = "fredrikaverpil/neotest-golang",
-	-- 	checkout = "stream",
-	-- })
-
-	add("stevearc/conform.nvim")
-	require("config.conform")
-
-	add("mfussenegger/nvim-lint")
-	require("config.nvim-lint")
-
-	add("tpope/vim-abolish")
-
-	add("FabijanZulj/blame.nvim")
-	require("blame").setup()
-
-	add("nvim-telescope/telescope.nvim")
-	require("config.telescope")
-
-	add({
-		source = "ThePrimeagen/harpoon",
-		checkout = "harpoon2",
-	})
-	require("config.harpoon")
-
-	add({
-		source = "hrsh7th/nvim-cmp",
-		depends = {
-			"L3MON4D3/LuaSnip",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-path",
-			"andersevenrud/cmp-tmux",
-		},
-	})
-	require("config.cmp")
-
-	add({
-		source = "L3MON4D3/LuaSnip",
-		depends = {
-			"rafamadriz/friendly-snippets",
-			"saadparwaiz1/cmp_luasnip",
-		},
-	})
-	require("config.luasnip")
-
-	add("echasnovski/mini.pairs")
-	require("mini.pairs").setup()
-
-	add("aserowy/tmux.nvim")
-	require("config.tmux")
-
-	add({ source = "echasnovski/mini.clue", checkout = "stable" })
-	require("config.mini-clue")
-
-	add({ source = "echasnovski/mini.surround", checkout = "stable" })
-	require("config.mini-surround")
-
-	add("https://codeberg.org/trevorhauter/gitportal.nvim")
-	require("gitportal").setup({
-		always_include_current_line = true, -- Include the current line in permalinks by default
-	})
-
-	add({
-		source = "brianhuster/live-preview.nvim",
-		depends = { "nvim-telescope/telescope.nvim" },
-	})
-end)
+require("config.aerial")
+require("ts-comments").setup()
+require("config.gitsigns")
+require("fidget").setup({})
+require("config.zen")
+require("tsc").setup({
+  flags = {
+    incremental = true,
+  },
+})
+require("config.dap")
+require("dap-go").setup()
+require("config.conform")
+require("config.nvim-lint")
+require("blame").setup()
+require("config.telescope")
+require("config.harpoon")
+require("config.cmp")
+require("config.luasnip")
+require("mini.pairs").setup()
+require("config.tmux")
+require("config.mini-clue")
+require("config.mini-surround")
+require("gitportal").setup({
+  always_include_current_line = true,
+})

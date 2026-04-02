@@ -1,5 +1,4 @@
 vim.loader.enable()
-require("mini-deps")
 require("basic")
 require("keymap")
 require("plugins")
