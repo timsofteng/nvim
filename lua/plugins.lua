@@ -1,49 +1,16 @@
 vim.pack.add({
+	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/echasnovski/mini.sessions",
 	"https://github.com/tpope/vim-sleuth",
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/ellisonleao/gruvbox.nvim",
 	"https://github.com/nvim-lualine/lualine.nvim",
 	"https://github.com/akinsho/git-conflict.nvim",
-	"https://github.com/keaising/im-select.nvim",
 	"https://github.com/hat0uma/csvview.nvim",
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/nvim-treesitter/nvim-treesitter-context",
 	"https://github.com/windwp/nvim-ts-autotag",
 	"https://github.com/neovim/nvim-lspconfig",
-	"https://github.com/nvim-lua/plenary.nvim",
-	"https://github.com/stevearc/aerial.nvim",
-	"https://github.com/folke/ts-comments.nvim",
-	"https://github.com/lewis6991/gitsigns.nvim",
-	"https://github.com/j-hui/fidget.nvim",
-	"https://github.com/arithran/vim-delete-hidden-buffers",
-	"https://github.com/folke/zen-mode.nvim",
-	"https://github.com/dmmulroy/tsc.nvim",
-	"https://github.com/mfussenegger/nvim-dap",
-	"https://github.com/igorlfs/nvim-dap-view",
-	"https://github.com/nvim-neotest/nvim-nio",
-	"https://github.com/leoluz/nvim-dap-go",
-	"https://github.com/nvim-neotest/neotest",
-	"https://github.com/antoinemadec/FixCursorHold.nvim",
-	"https://github.com/stevearc/conform.nvim",
-	"https://github.com/mfussenegger/nvim-lint",
-	"https://github.com/tpope/vim-abolish",
-	"https://github.com/nvim-telescope/telescope.nvim",
-	"https://github.com/hrsh7th/nvim-cmp",
-	"https://github.com/L3MON4D3/LuaSnip",
-	"https://github.com/hrsh7th/cmp-buffer",
-	"https://github.com/hrsh7th/cmp-nvim-lsp",
-	"https://github.com/hrsh7th/cmp-cmdline",
-	"https://github.com/hrsh7th/cmp-path",
-	"https://github.com/andersevenrud/cmp-tmux",
-	"https://github.com/rafamadriz/friendly-snippets",
-	"https://github.com/saadparwaiz1/cmp_luasnip",
-	"https://github.com/echasnovski/mini.pairs",
-	"https://github.com/aserowy/tmux.nvim",
-	"https://github.com/echasnovski/mini.clue",
-	"https://github.com/echasnovski/mini.surround",
-	"https://codeberg.org/trevorhauter/gitportal.nvim",
-	"https://github.com/brianhuster/live-preview.nvim",
 })
 
 require("mini.sessions").setup()
@@ -51,17 +18,53 @@ require("config.oil")
 require("config.colorscheme")
 require("config.lualine")
 require("git-conflict").setup({})
-require("im_select").setup({})
 require("config.csvview")
 require("config.treesitter")
 require("config.lsp")
 
---lazy loading
+-- lazy loading
 vim.defer_fn(function()
+	vim.pack.add({
+		"https://github.com/keaising/im-select.nvim",
+		"https://github.com/j-hui/fidget.nvim",
+		"https://github.com/stevearc/aerial.nvim",
+		"https://github.com/folke/ts-comments.nvim",
+		"https://github.com/lewis6991/gitsigns.nvim",
+		"https://github.com/arithran/vim-delete-hidden-buffers",
+		"https://github.com/folke/zen-mode.nvim",
+		"https://github.com/dmmulroy/tsc.nvim",
+		"https://github.com/mfussenegger/nvim-dap",
+		"https://github.com/igorlfs/nvim-dap-view",
+		"https://github.com/nvim-neotest/nvim-nio",
+		"https://github.com/leoluz/nvim-dap-go",
+		"https://github.com/nvim-neotest/neotest",
+		"https://github.com/antoinemadec/FixCursorHold.nvim",
+		"https://github.com/stevearc/conform.nvim",
+		"https://github.com/mfussenegger/nvim-lint",
+		"https://github.com/tpope/vim-abolish",
+		"https://github.com/nvim-telescope/telescope.nvim",
+		"https://github.com/hrsh7th/nvim-cmp",
+		"https://github.com/L3MON4D3/LuaSnip",
+		"https://github.com/hrsh7th/cmp-buffer",
+		"https://github.com/hrsh7th/cmp-nvim-lsp",
+		"https://github.com/hrsh7th/cmp-cmdline",
+		"https://github.com/hrsh7th/cmp-path",
+		"https://github.com/andersevenrud/cmp-tmux",
+		"https://github.com/rafamadriz/friendly-snippets",
+		"https://github.com/saadparwaiz1/cmp_luasnip",
+		"https://github.com/echasnovski/mini.pairs",
+		"https://github.com/aserowy/tmux.nvim",
+		"https://github.com/echasnovski/mini.clue",
+		"https://github.com/echasnovski/mini.surround",
+		"https://codeberg.org/trevorhauter/gitportal.nvim",
+		"https://github.com/brianhuster/live-preview.nvim",
+	})
+
+	require("im_select").setup({})
+	require("fidget").setup({})
 	require("config.aerial")
 	require("ts-comments").setup()
 	require("config.gitsigns")
-	require("fidget").setup({})
 	require("config.zen")
 	require("tsc").setup({ flags = { incremental = true } })
 	require("config.dap")
