@@ -9,8 +9,7 @@ vim.opt.smartcase = true
 -- vim.opt.linebreak = true
 vim.opt.cursorline = true
 
-vim.o.synmaxcol = 300 -- Don't syntax highlight long lines
-vim.opt.lazyredraw = true
+vim.opt.synmaxcol = 300 -- Don't syntax highlight long lines
 -- Decrease update time
 vim.opt.updatetime = 250
 
@@ -29,9 +28,6 @@ vim.g.loaded_netrw = 0
 -- vim.opt.spelllang = "en,ru,uk"
 -- vim.opt.spelloptions = 'camel'
 -- vim.opt.spellcapcheck = ""
-
--- slow down interface responsive
-vim.opt.breakindent = true
 
 vim.opt.scrolloff = 5
 
