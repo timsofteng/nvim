@@ -1,4 +1,3 @@
--- vim.o.cmdheight = 0
 vim.opt.clipboard = "unnamedplus"
 vim.opt.smartindent = true
 vim.opt.undofile = true
@@ -23,11 +22,6 @@ vim.opt.shiftwidth = 2
 
 vim.g.loaded_netrwPlugin = 0
 vim.g.loaded_netrw = 0
-
--- vim.opt.spell = true
--- vim.opt.spelllang = "en,ru,uk"
--- vim.opt.spelloptions = 'camel'
--- vim.opt.spellcapcheck = ""
 
 vim.opt.scrolloff = 5
 

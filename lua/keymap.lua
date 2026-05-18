@@ -23,8 +23,13 @@ keymap("n", "<Leader>wa", ":wa<cr>", vim.tbl_extend("error", { desc = "Save [a]l
 keymap("n", "<Leader>#", ":set number!<cr>", vim.tbl_extend("error", opts, { desc = "Numbers toggle" }))
 
 -- Diagnostic keymaps
-keymap("n", "[d", vim.diagnostic.goto_prev)
-keymap("n", "]d", vim.diagnostic.goto_next)
+keymap("n", "[d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end)
+
+keymap("n", "]d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end)
 
 -- quickfix
 keymap("n", "<leader>qq", toggle_quickfix, unpack(opts))

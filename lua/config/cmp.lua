@@ -47,6 +47,8 @@ local bufTrigger = function()
 							get_bufnrs = allBuffersSource,
 						},
 						{ name = "tmux" },
+
+
 					},
 				},
 			},
@@ -163,8 +165,8 @@ cmp.setup.cmdline(":", {
 			c = function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-				-- elseif vim.fn.histget(':', vim.fn.histnr(':') + 1) == '' then
-				--   cmp.complete()
+					-- elseif vim.fn.histget(':', vim.fn.histnr(':') + 1) == '' then
+					--   cmp.complete()
 				else
 					cmp.complete()
 				end
@@ -177,11 +179,6 @@ cmp.setup.cmdline(":", {
 		{ name = "cmdline" },
 	},
 })
-
--- nvim-cmp supports additional completion capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 return {
 	bufTrigger = bufTrigger,
