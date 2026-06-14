@@ -32,7 +32,7 @@ keymap("n", "]d", function()
 end)
 
 -- quickfix
-keymap("n", "<leader>qq", toggle_quickfix, unpack(opts))
+keymap("n", "<leader>qq", toggle_quickfix, opts)
 keymap("n", "[q", ":cprev<cr>", vim.tbl_extend("error", { desc = "prev [q]f item" }, opts))
 keymap("n", "]q", ":cnext<cr>", vim.tbl_extend("error", { desc = "next [q]f item" }, opts))
 keymap("n", "[Q", ":cold<cr>", vim.tbl_extend("error", { desc = "older [Q]f list" }, opts))
@@ -57,4 +57,4 @@ keymap(
 keymap("c", "<C-p>", "<Up>", { silent = false })
 keymap("c", "<C-n>", "<Down>", { silent = false })
 
-keymap("n", "<Leader>*", [[:Undotree<cr>]], { desc = "UndoTree", unpack(opts) })
+keymap("n", "<Leader>*", [[:Undotree<cr>]], { desc = "UndoTree" }, opts)

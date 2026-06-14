@@ -47,8 +47,6 @@ local bufTrigger = function()
 							get_bufnrs = allBuffersSource,
 						},
 						{ name = "tmux" },
-
-
 					},
 				},
 			},
@@ -162,7 +160,7 @@ cmp.setup.cmdline("/", {
 cmp.setup.cmdline(":", {
 	mapping = cmp.mapping.preset.cmdline({
 		["<Tab>"] = {
-			c = function(fallback)
+			c = function(_)
 				if cmp.visible() then
 					cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 					-- elseif vim.fn.histget(':', vim.fn.histnr(':') + 1) == '' then
